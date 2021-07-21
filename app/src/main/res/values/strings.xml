@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">TomoeSushi</string>
     <string name="arraste">Arraste para o lado</string>
+    <string name="nome">Nome</string>
+    <string name="email">Email</string>
+    <string name="tel">Telefone</string>
+    <string name="senha">Senha</string>
+
+    <string name="item">Itens</string>
+    <string name="pag">Pagamento</string>
+    <string name="confirmado">Confirmado</string>
+    <string name="conf">Confirmar</string>
+    <string name="cont">Continuar</string>
+    <string name="login">Login</string>
+
+    <string name="obg">Agradecemos pela preferência</string>
+
 
 </resources>

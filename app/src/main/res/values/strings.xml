@@ -5,6 +5,8 @@
     <string name="email">Email</string>
     <string name="tel">Telefone</string>
     <string name="senha">Senha</string>
+    <string name="confSenha">Confirmar senha</string>
+    <string name="NoCadastro"><u>Ainda não tem cadastro</u></string>
 
     <string name="item">Itens</string>
     <string name="pag">Pagamento</string>
@@ -32,6 +34,9 @@
 
     <string name="Pedidos">Pedido(s)</string>
 
+    <string name="procura">Itens</string>
+
+    <string name="localizacao">Minha localização</string>
 
 
 </resources>

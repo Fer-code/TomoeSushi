@@ -7,10 +7,21 @@
 
     <com.example.tomoesushi.CustomView
         android:id="@+id/editTextTextPesquisada"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/duru_sans"
-        android:ems="10"
+        android:layout_width="350dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30px"
+        android:textSize="24sp"
+        android:background="@drawable/fundo_busca"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="@string/procura"
+         />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider" />
+
 </LinearLayout>

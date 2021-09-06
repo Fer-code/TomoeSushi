@@ -4,14 +4,12 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_height="match_parent">
 
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carousel_view"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="1dp"
         app:pageColor="#00000000"
         app:fillColor="#FFFFFFFF"
         app:slideInterval="3000"
@@ -21,12 +19,55 @@
 
     </com.synnapps.carouselview.CarouselView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="200dp"
+        android:orientation="vertical">
+
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:background="?android:attr/listDivider" />
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="90dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="5dp"
+        android:elevation="40dp"
+        android:layout_marginTop="10dp">
 
+        <ImageView
+            android:id="@+id/d"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/ic_baseline_place_24"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="70dp"
+            android:hint="@string/localizacao"
+            android:textSize="20sp"/>
+
+    </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+
+    </LinearLayout>
 
 </RelativeLayout>

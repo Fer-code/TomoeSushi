@@ -1,9 +1,11 @@
 package com.example.tomoesushi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,9 @@ import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
 public class HomeFragment extends Fragment {
+
+    Button button;
+
     private int[] mImages = new int[]{
             R.drawable.prato_apres_1,
             R.drawable.prato_apres_2,
@@ -29,6 +34,8 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         CarouselView carouselView = (CarouselView) view.findViewById(R.id.carousel_view);
 
+         button = view.findViewById(R.id.button);
+
         carouselView.setPageCount(mImages.length);
         carouselView.setImageListener(new ImageListener() {
             @Override
@@ -36,6 +43,15 @@ public class HomeFragment extends Fragment {
                 imageView.setImageResource(mImages[position]);
             }
         });
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), Profile.class);
+                    startActivity(intent);
+                }
+            });
+
         return view;
     }
 

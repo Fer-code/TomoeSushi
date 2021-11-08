@@ -12,7 +12,10 @@ public class Cadastro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+
+        getSupportActionBar().hide();
     }
+
     public void Cadastrar(View v){
         Intent inte = new Intent(this, Login.class);
         startActivity(inte);

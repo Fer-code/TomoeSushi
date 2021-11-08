@@ -9,8 +9,8 @@
 
     <androidx.cardview.widget.CardView
         android:layout_margin="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="200dp"
+        android:layout_height="210dp"
         app:cardCornerRadius="5dp"
         android:elevation="400dp">
 
@@ -18,7 +18,7 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/ic_launcher_foreground"
+            app:srcCompat="@drawable/sushibranco"
             tools:ignore="VectorDrawableCompat" />
     </androidx.cardview.widget.CardView>
 

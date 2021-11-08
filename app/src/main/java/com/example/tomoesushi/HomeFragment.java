@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +19,7 @@ import com.synnapps.carouselview.ImageListener;
 public class HomeFragment extends Fragment {
 
     Button button;
+    Toolbar toolbar;
 
     private int[] mImages = new int[]{
             R.drawable.prato_apres_1,
@@ -29,12 +31,10 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //return inflater.inflate(R.layout.fragment_home, container, false);
+        /*return /*inflater.inflate(R.layout.fragment_home, container, false*/
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         CarouselView carouselView = (CarouselView) view.findViewById(R.id.carousel_view);
-
-         button = view.findViewById(R.id.button);
 
         carouselView.setPageCount(mImages.length);
         carouselView.setImageListener(new ImageListener() {
@@ -44,13 +44,13 @@ public class HomeFragment extends Fragment {
             }
         });
 
-            button.setOnClickListener(new View.OnClickListener() {
+            /*button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), Profile.class);
                     startActivity(intent);
                 }
-            });
+            });*/
 
         return view;
     }

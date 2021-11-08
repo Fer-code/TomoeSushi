@@ -6,6 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent">
 
+
+
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carousel_view"
         android:layout_width="match_parent"
@@ -31,7 +33,7 @@
         android:layout_height="4dp"
         android:background="?android:attr/listDivider" />
 
-    <androidx.cardview.widget.CardView
+        <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"

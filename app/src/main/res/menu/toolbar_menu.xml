@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="menu"
+        android:id="@+id/menuProfile"
+        app:showAsAction="always"
+        app:actionLayout="@layout/circle"
+        />
+
+    <item
+        android:title="u"
+        android:id="@+id/help"
+        app:showAsAction="always"
+        />
+
+
+</menu>

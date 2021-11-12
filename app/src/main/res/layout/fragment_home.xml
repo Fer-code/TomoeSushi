@@ -6,8 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent">
 
-
-
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carousel_view"
         android:layout_width="match_parent"
@@ -62,12 +60,6 @@
             android:textSize="20sp"/>
 
     </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
 
 
     </LinearLayout>

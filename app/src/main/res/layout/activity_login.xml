@@ -16,8 +16,9 @@
         android:ems="10"
         android:hint="@string/nome"
         android:inputType="textPersonName"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:backgroundTint="@color/cardview_light_background"
+        android:textColorHint="@color/white"
+        android:textStyle="normal" />
 
     <EditText
         android:id="@+id/ETsenha"
@@ -28,6 +29,7 @@
         android:inputType="textPersonName"
         android:password="true"
         android:textColor="@color/white"
+        android:backgroundTint="@color/cardview_light_background"
         android:textColorHint="@color/white" />
 
     <Button

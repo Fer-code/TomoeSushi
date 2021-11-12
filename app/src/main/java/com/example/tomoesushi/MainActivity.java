@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity{
                 String uriText =
                         null;
                 try {
-                    uriText = "mailto:TomoeSushi@gmail.com" +
+                    uriText = "mailto:tomoeSushi@gmail.com" +
                             "?subject=" + URLEncoder.encode("Informe o assunto", "utf-8") +
                             "&body=" + URLEncoder.encode(" ", "utf-8");
                 } catch (UnsupportedEncodingException e) {

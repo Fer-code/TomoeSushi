@@ -1,13 +1,16 @@
 package com.example.tomoesushi.database;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class DBHelper extends SQLiteOpenHelper {
+import com.example.tomoesushi.models.User;
 
+public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "TomoeSushi";
     public static final int DATABASE_VERSION = 1;
@@ -19,79 +22,73 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String USUARIO_COLUMN_EMAIL = "emailUsuario";
     public static final String USUARIO_COLUMN_TEL = "telUsuario";
     public static final String USUARIO_COLUMN_SENHA = "senhaUsuario";
-    //TABELA PRODUTO
-    public static final String PRODUTO_TABLE_NAME = "TBProduto";
-    public static final String PRODUTO_COLUMN_ID = "idProduto";
-    public static final String PRODUTO_COLUMN_NAME = "nomeProduto";
-    public static final String PRODUTO_COLUMN_PRECO = "precoProduto";
-    public static final String PRODUTO_COLUMN_DESC = "descricaoProduto";
-    public static final String PRODUTO_COLUMN_DF = "dataFabricacaoProduto";
-    public static final String PRODUTO_COLUMN_DV = "dataValidadeProduto";
-    public static final String PRODUTO_COLUMN_CAT = "categoriaProduto";
-    public static final String PRODUTO_COLUMN_STATUS = "statusProduto";
-    //TABELA PEDIDO
-    public static final String PEDIDO_TABLE_NAME = "TBPedido";
-    public static final String PEDIDO_COLUMN_ID = "idPedido";
-    public static final String PEDIDO_COLUMN_QUANT = "quantidadePedido";
-    public static final String PEDIDO_COLUMN_DATE = "dataPedido";
-    public static final String PEDIDO_COLUMN_TIME = "horaPedido";
-    public static final String PEDIDO_COLUMN_STATUS = "statusPedido";
-    public static final String PEDIDO_COLUMN_SUBTOTAL = "subtotalPedido";
-    //TABELA DELIVERY
-    public static final String DELIVERY_TABLE_NAME = "TBDelivery";
-    public static final String DELIVERY_COLUMN_ID = "idDelivery";
-    public static final String DELIVERY_COLUMN_USER = "idUserDel";
-    public static final String DELIVERY_COLUMN_PED = "idPedDel";
-    public static final String DELIVERY_COLUMN_BAIRRO = "bairroDelivery";
-    public static final String DELIVERY_COLUMN_LOG = "logradouroDelivery";
-    public static final String DELIVERY_COLUMN_CEP = "CEPDelivery";
-    public static final String DELIVERY_COLUMN_NUM = "numeroDelivery";
-    //TABELA MESA
-    public static final String MESA_TABLE_NAME = "TBMesa";
-    public static final String MESA_TABLE_ID = "idMesa";
-    public static final String MESA_TABLE_NUMCHAIR = "numAssentosMesa";
-    public static final String MESA_TABLE_NUMMESA = "numMesa";
-    public static final String MESA_TABLE_STATUS = "statusMesa";
-    //TABELA RESERVA
-    public static final String RESERVA_TABLE_NAME = "TMReserva";
-    public static final String RESERVA_COLUMN_ID = "idReserva";
-    public static final String RESERVA_COLUMN_USER = "idUserRes";
-    public static final String RESERVA_COLUMN_MESA = "idMesaRes";
-    public static final String RESERVA_COLUMN_NUMPEOPLE = "numPeopleRes";
-    public static final String RESERVA_COLUMN_DATE = "dataReserva";
-    public static final String RESERVA_COLUMN_TIME = "horaReserva";
-    //TABELA PAGAMENTO
-    public static final String PAGAMENTO_TABLE_NAME = "TBPagamento";
-    public static final String PAGAMENTO_COLUMN_ID = "idPagamento";
-    public static final String PAGAMENTO_COLUMN_PED = "idPedPag";
-    public static final String PAGAMENTO_COLUMN_CPF = "cpfPagamento";
-    public static final String PAGAMENTO_COLUMN_TOTAL = "totalPagamento";
-    public static final String PAGAMENTO_COLUMN_TROCO = "trocoPagamento";
-    public static final String PAGAMENTO_COLUMN_TYPE = "tipoPagamento";
 
-
-    public DBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public DBHelper(@Nullable Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        String QUERY_USUARIO = "CREATE TABLE TBUsuario ( idUsuario INTEGER PRIMARY KEY, nomeUsuario  TEXT, " +
+                "emailUsuario  TEXT,  telUsuario TEXT, senhaUsuario TEXT); ";
 
+        db.execSQL(QUERY_USUARIO);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + USUARIO_TABLE_NAME + ";" );
+        onCreate(db);
     }
 
     //-----------------INSERTS----------------------------------------------------------------------
+   public void addUsuario (User usuario){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(USUARIO_COLUMN_NAME, usuario.getNomeUser());
+        values.put(USUARIO_COLUMN_EMAIL, usuario.getEmailUser());
+        values.put(USUARIO_COLUMN_TEL, usuario.getTelUser());
+        values.put(USUARIO_COLUMN_SENHA, usuario.getSenhaUser());
+
+        db.insert(USUARIO_TABLE_NAME, null, values);
+        db.close();
+    }
 
     //-----------------UPDATES----------------------------------------------------------------------
 
     //----------------SELECTS ALL-------------------------------------------------------------------
 
     //----------------SELECT WHERE------------------------------------------------------------------
+    public boolean autenticaUsuario(User usuario){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql_busca_usuario =
+                "SELECT * FROM " + USUARIO_TABLE_NAME + " WHERE " + USUARIO_COLUMN_EMAIL + " = " + "'" + usuario.getNomeUser() + "'";
+        Cursor c = db.rawQuery(sql_busca_usuario, null);
+        while(c.moveToNext()){
+            if(usuario.getNomeUser().equals(c.getString(c.getColumnIndex(USUARIO_COLUMN_EMAIL)))){
+                if(usuario.getSenhaUser().equals(c.getString(c.getColumnIndex(USUARIO_COLUMN_SENHA)))){
+                    return true;
+                }
 
+            }
+        }
+        db.close();
+        c.close();
+
+        return false;
+    }
+
+    public  boolean ValidacaoEmail(String string){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT ? FROM TBUsuario WHERE emailUsuario =?", new String[]{string,string});
+        if(c.getCount()>0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     //----------------DELETE ALL--------------------------------------------------------------------
 
     //----------------DELETE WHERE------------------------------------------------------------------

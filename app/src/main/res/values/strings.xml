@@ -37,9 +37,9 @@
     <string name="procura">Itens</string>
 
     <string name="localizacao">Minha localização</string>
-    <string name="infoTel"><u>11 98367-6652</u></string>
-    <string name="infoMail"><u>email@gmail.com</u></string>
-    <string name="infoEnd"><u>Rua Guaipá - Imperatriz Leopoldina - SP</u></string>
+    <string name="infoTel">11 98367-6652</string>
+    <string name="infoMail">tomoeSushi@gmail.com</string>
+    <string name="infoEnd">Rua Guaipá - Imperatriz Leopoldina - SP</string>
     <string name="contactUs"><u>Clique para entrar em contato</u></string>
 
 

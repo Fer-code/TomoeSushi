@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:padding="20dp"
+    android:layout_width="350dp"
+    android:layout_height="350dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/sushibranco"/>
+
+    <TextView
+        android:id="@+id/tel"
+        android:drawableLeft="@drawable/ic_baseline_phone_enabled_24"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColorHint="@color/black"
+        android:textSize="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/logo"
+        android:hint="@string/infoTel"/>
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:drawableLeft="@drawable/ic_baseline_markunread_24"
+        android:textColorHint="@color/black"
+        android:textSize="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/tel"
+        android:hint="@string/infoMail"/>
+
+    <TextView
+        android:id="@+id/end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:drawableLeft="@drawable/ic_baseline_place_othercolor"
+        android:textColorHint="@color/black"
+        android:textSize="18dp"
+        android:layout_below="@id/email"
+        android:hint="@string/infoEnd"/>
+
+    <TextView
+        android:id="@+id/enterContact"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:textColorHint="#640202"
+        android:textSize="12dp"
+        android:layout_below="@id/end"
+        android:hint="@string/contactUs"/>
+
+</RelativeLayout>

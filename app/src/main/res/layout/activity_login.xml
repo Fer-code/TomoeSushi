@@ -9,13 +9,14 @@
     android:orientation="vertical"
     tools:context=".Login">
 
-    <EditText
+    <com.example.tomoesushi.CustomView
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/nome"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
         android:backgroundTint="@color/cardview_light_background"
         android:textColorHint="@color/white"
         android:textStyle="normal" />
@@ -37,8 +38,9 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:onClick="Enter"
+        android:textColorHint="@color/white"
         android:layout_marginTop="20dp"
-        android:text="Button" />
+        android:hint="@string/conf"/>
 
     <TextView
         android:layout_width="match_parent"

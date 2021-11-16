@@ -42,5 +42,35 @@
     <string name="infoEnd">Rua Guaipá - Imperatriz Leopoldina - SP</string>
     <string name="contactUs"><u>Clique para entrar em contato</u></string>
 
+    <string name="AdressDelivery">Endereço para entrega</string>
+
+    <string name="optional">Preenchimento opcional:</string>
+    <string name="cep">CEP</string>
+    <string name="or">ou</string>
+    <string name="logradouro">Logradouro</string>
+    <string name="complemento">Complemento</string>
+    <string name="number">Número</string>
+
+
+    <string name="get_location">Obter Localização</string>
+    <string name="android_image">Android Logo</string>
+    <string name="textview_hint">Clique no botão para iniciar
+    </string>
+    <string name="location_permission_denied">Permissão negada, autorize a aplicação
+    </string>
+    <string name="address_text">"%1$s"</string>
+
+    <string name="no_location">Localização Indisponível</string>
+    <string name="no_address_found">Endereço não disponível</string>
+    <string name="loading">Carregando…</string>
+    <string name="service_not_available">Serviço Indisponível</string>
+    <string name="invalid_lat_long_used">Coordenadas Inválidas</string>
+    <string name="start_tracking_location">Iniciar a Busca</string>
+    <string name="stop_tracking_location">Parar a Busca</string>
+    <string name="nowLocation">Localização atual</string>
+    <string name="iniciar">Permitir busca</string>
+
+    <string name="outrolocal">Outra(s)</string>
+
 
 </resources>

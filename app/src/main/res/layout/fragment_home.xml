@@ -32,7 +32,8 @@
         android:background="?android:attr/listDivider" />
 
         <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+            android:id="@+id/myL"
+            android:layout_width="match_parent"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_height="90dp"

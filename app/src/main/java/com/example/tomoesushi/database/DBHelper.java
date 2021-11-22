@@ -10,6 +10,9 @@ import androidx.annotation.Nullable;
 
 import com.example.tomoesushi.models.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "TomoeSushi";
@@ -21,6 +24,10 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String USUARIO_COLUMN_NAME = "nomeUsuario";
     public static final String USUARIO_COLUMN_EMAIL = "emailUsuario";
     public static final String USUARIO_COLUMN_TEL = "telUsuario";
+    public static final String USUARIO_COLUMN_CEP = "cepUsuario";
+    public static final String USUARIO_COLUMN_LOGRADOURO = "logUsuario";
+    public static final String USUARIO_COLUMN_COMPLEMENTO = "comUsuario";
+    public static final String USUARIO_COLUMN_NUMBER = "numberUsuario";
     public static final String USUARIO_COLUMN_SENHA = "senhaUsuario";
 
     public DBHelper(@Nullable Context context) {
@@ -30,7 +37,8 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String QUERY_USUARIO = "CREATE TABLE TBUsuario ( idUsuario INTEGER PRIMARY KEY, nomeUsuario  TEXT, " +
-                "emailUsuario  TEXT,  telUsuario TEXT, senhaUsuario TEXT); ";
+                "emailUsuario  TEXT,  telUsuario TEXT, senhaUsuario TEXT, " +
+                "cepUsuario TEXT, logUsuario TEXT, comUsuario TEXT, numberUsuario INTEGER); ";
 
         db.execSQL(QUERY_USUARIO);
     }
@@ -50,14 +58,44 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(USUARIO_COLUMN_EMAIL, usuario.getEmailUser());
         values.put(USUARIO_COLUMN_TEL, usuario.getTelUser());
         values.put(USUARIO_COLUMN_SENHA, usuario.getSenhaUser());
+        values.put(USUARIO_COLUMN_CEP, usuario.getCepUser());
+        values.put(USUARIO_COLUMN_LOGRADOURO, usuario.getLogUser());
+        values.put(USUARIO_COLUMN_COMPLEMENTO, usuario.getComplementoUser());
+        values.put(USUARIO_COLUMN_NUMBER, usuario.getNumUser());
 
-        db.insert(USUARIO_TABLE_NAME, null, values);
+
+       db.insert(USUARIO_TABLE_NAME, null, values);
         db.close();
     }
 
     //-----------------UPDATES----------------------------------------------------------------------
 
     //----------------SELECTS ALL-------------------------------------------------------------------
+    public List<User> listAllUsers (){
+        List<User> listaU    = new ArrayList<User>();
+        String query = "SELECT * FROM " + USUARIO_TABLE_NAME;
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        if(c.moveToFirst()){
+            do{
+                User cliente = new User();
+                cliente.setIdUser(Integer.parseInt(c.getString(0)));
+                cliente.setNomeUser(c.getString(1));
+                cliente.setEmailUser(c.getString(2));
+                cliente.setTelUser(c.getString(3));
+                cliente.setSenhaUser(c.getString(4));
+                cliente.setCepUser(c.getString(5));
+                cliente.setLogUser(c.getString(5));
+                cliente.setComplementoUser(c.getString(5));
+                cliente.setNumUser(c.getString(5));
+
+                listaU.add(cliente);
+            }while(c.moveToNext());
+        }
+        return  listaU;
+    }
 
     //----------------SELECT WHERE------------------------------------------------------------------
     public boolean autenticaUsuario(User usuario){

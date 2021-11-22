@@ -24,10 +24,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -38,7 +48,9 @@ public class MainActivity extends AppCompatActivity{
 
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
-    private TextView telefone, email, localizacao;
+    private TextView telefone, email, localizacao, result;
+
+    private RequestQueue mQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +65,10 @@ public class MainActivity extends AppCompatActivity{
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new HomeFragment()).commit();
 
-        
-
+        mQueue = Volley.newRequestQueue(this);
     }
+
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener=
             new BottomNavigationView.OnNavigationItemSelectedListener() {

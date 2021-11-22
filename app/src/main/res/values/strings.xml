@@ -8,6 +8,8 @@
     <string name="confSenha">Confirmar senha</string>
     <string name="NoCadastro"><u>Ainda não tem cadastro</u></string>
 
+    <string name="save">Salvar</string>
+
     <string name="item">Itens</string>
     <string name="pag">Pagamento</string>
     <string name="confirmado">Confirmado</string>
@@ -71,6 +73,7 @@
     <string name="iniciar">Permitir busca</string>
 
     <string name="outrolocal">Outra(s)</string>
+    <string name="pular">Pular</string>
 
 
 </resources>

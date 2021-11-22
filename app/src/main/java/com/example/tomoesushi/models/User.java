@@ -6,6 +6,10 @@ public class User {
     public String emailUser;
     public String telUser;
     public String senhaUser;
+    public String cepUser;
+    public String logUser;
+    public String complementoUser;
+    public String numUser;
 
     public User(){
 
@@ -17,6 +21,61 @@ public class User {
         this.emailUser = emailUser;
         this.telUser = telUser;
         this.senhaUser = senhaUser;
+    }
+
+    public User(int idUser, String nomeUser, String emailUser, String telUser, String senhaUser, String cepUser, String logUser, String complementoUser, String numUser) {
+        this.idUser = idUser;
+        this.nomeUser = nomeUser;
+        this.emailUser = emailUser;
+        this.telUser = telUser;
+        this.senhaUser = senhaUser;
+        this.cepUser = cepUser;
+        this.logUser = logUser;
+        this.complementoUser = complementoUser;
+        this.numUser = numUser;
+    }
+
+    public User(String nomeUser, String emailUser, String telUser, String senhaUser, String cepUser, String logUser, String complementoUser, String numUser) {
+        this.nomeUser = nomeUser;
+        this.emailUser = emailUser;
+        this.telUser = telUser;
+        this.senhaUser = senhaUser;
+        this.cepUser = cepUser;
+        this.logUser = logUser;
+        this.complementoUser = complementoUser;
+        this.numUser = numUser;
+    }
+
+    public String getCepUser() {
+        return cepUser;
+    }
+
+    public void setCepUser(String cepUser) {
+        this.cepUser = cepUser;
+    }
+
+    public String getLogUser() {
+        return logUser;
+    }
+
+    public void setLogUser(String logUser) {
+        this.logUser = logUser;
+    }
+
+    public String getComplementoUser() {
+        return complementoUser;
+    }
+
+    public void setComplementoUser(String complementoUser) {
+        this.complementoUser = complementoUser;
+    }
+
+    public String getNumUser() {
+        return numUser;
+    }
+
+    public void setNumUser(String numUser) {
+        this.numUser = numUser;
     }
 
     public User(String nomeUser, String emailUser, String telUser, String senhaUser) {

@@ -12,13 +12,12 @@
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="5dp"
         android:layout_width="300dp"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         app:cardBackgroundColor="#FFF">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="25dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -28,7 +27,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
                 android:gravity="center"
@@ -41,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:textColorHint="@color/black"
                 android:hint="@string/nome"/>
 
@@ -86,52 +85,7 @@
                 android:textColorHint="@color/black"
                 android:inputType="textPassword" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:hint="@string/optional"
-                    android:layout_marginTop="10dp"/>
 
-                <com.example.tomoesushi.CustomView
-                    android:id="@+id/edtCep"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:layout_marginTop="10dp"
-                    android:hint="@string/cep"
-                    android:textColorHint="@color/black"
-                    android:inputType="numberSigned" />
-
-                <com.example.tomoesushi.CustomView
-                    android:id="@+id/edtLogradouro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:layout_marginTop="10dp"
-                    android:textColorHint="@color/black"
-                    android:hint="@string/logradouro"/>
-
-                <com.example.tomoesushi.CustomView
-                    android:id="@+id/edtComplemento"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:layout_marginTop="10dp"
-                    android:textColorHint="@color/black"
-                    android:hint="@string/complemento"/>
-
-                <com.example.tomoesushi.CustomView
-                    android:id="@+id/edtnumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:layout_marginTop="10dp"
-                    android:textColorHint="@color/black"
-                    android:hint="@string/number"/>
             </LinearLayout>
         </ScrollView>
         </LinearLayout>

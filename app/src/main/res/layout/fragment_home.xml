@@ -62,6 +62,15 @@
 
     </androidx.cardview.widget.CardView>
 
+        <TextView
+            android:id="@+id/text_view_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
 
     </LinearLayout>
 

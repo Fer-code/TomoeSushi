@@ -8,6 +8,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,13 +31,15 @@ public class MyLocation extends AppCompatActivity implements FetchAddressTask.On
 
 
     private static final int REQUEST_LOCATION_PERMISSION = 1;
-    private static final String FILE_NAME = "local.txt";
+    private static final String FILE_NAME = "local";
 
     private TextView txtResultado, txtLoad;
 
     private String lastLatitude = "";
     private String lastLongitude = "";
     private String lastAdress = "";
+
+    private String teste = "";
 
 
     private FusedLocationProviderClient mFusedLocationClient;
@@ -72,17 +75,38 @@ public class MyLocation extends AppCompatActivity implements FetchAddressTask.On
     protected void onStart() {
         super.onStart();
         vaiofvr();
-        canCallLoad();
+        load();
+
+        String result = txtResultado.getText().toString();
+        String load = txtLoad.getText().toString();
+
+        int la = 0;
+        
+        if (teste.contains(lastAdress)) {
+            Toast.makeText(this, "IGUAL", Toast.LENGTH_LONG).show();
+        } else{
+            Toast.makeText(this, "CRONOOOO", Toast.LENGTH_LONG).show();
+        }
+        //canCallLoad();
+
+       /* String results = txtLoad.getText().toString();
+        for (int i = 0; i < results.length(); i++)
+        {
+            // Whatever the relevant log call is
+            Log.d("Got character: ", "" + (int) results.charAt(i));
+        }
+*/
     }
 
-    public void canCallLoad(){
+   /* public void canCallLoad(){
         if(!txtResultado.getText().toString().equals(txtLoad.getText().toString())){
             load();
         }
         else{
-            txtLoad.setVisibility(false ? View.VISIBLE : View.GONE);
+            //txtLoad.setVisibility(false ? View.VISIBLE : View.GONE);
+            Toast.makeText(this, "equal", Toast.LENGTH_LONG).show();
         }
-    }
+    }*/
 
     public void vaiofvr(){
         if (!mTrackingLocation) {
@@ -154,8 +178,8 @@ public class MyLocation extends AppCompatActivity implements FetchAddressTask.On
             lastLatitude = result[1];
             lastLongitude = result[2];
             lastAdress = result[0];
-            txtResultado.setText(getString(R.string.address_text,
-                    lastAdress));
+            txtResultado.setText(getString(R.string.address_text, lastAdress));
+
             save();
             //Esconder a progressBar
 
@@ -197,10 +221,12 @@ public class MyLocation extends AppCompatActivity implements FetchAddressTask.On
             String text;
 
             while ((text = br.readLine()) != null){
-                sb.append(text).append("\n");
+                sb.append(text);
             }
 
-            txtLoad.setText(sb.toString());
+            teste = sb.toString();
+
+            txtLoad.setText(teste);
 
         }catch (FileNotFoundException e){
             e.printStackTrace();

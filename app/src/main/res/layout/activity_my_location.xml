@@ -86,9 +86,9 @@
                     android:id="@+id/txtInternal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="10dp"
+                    android:textSize="20sp"
                     android:textColorHint="@color/black"
-                    android:textSize="20sp" />
+                    android:layout_margin="10dp"/>
 
             </androidx.cardview.widget.CardView>
         </LinearLayout>

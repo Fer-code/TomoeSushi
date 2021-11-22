@@ -1,80 +1,87 @@
 package com.example.tomoesushi.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Produto {
-    public int idProd;
-    public String nomeProd;
-    public String descProd;
-    public String DF;
-    public String DV;
-    public double precoProd;
-    public String catProd;
-    public boolean statusProd;
+    @SerializedName("idProd")
+    public int midProd;
+    @SerializedName("nomeProd")
+    public String mnomeProd;
+    @SerializedName("descProd")
+    public String mdescProd;
+    @SerializedName("precoProd")
+    public double mprecoProd;
+    @SerializedName("categoriaProd")
+    public String mcatProd;
+    @SerializedName("statusProd")
+    public String mstatusProd;
 
     public Produto(){
 
     }
 
+    public Produto(String nomeProd, String descProd, double precoProd, String catProd, String statusProd) {
+        mnomeProd = nomeProd;
+        mdescProd = descProd;
+        mprecoProd = precoProd;
+        mcatProd = catProd;
+        mstatusProd = statusProd;
+    }
+
+    public Produto(int idProd, String nomeProd, String descProd, double precoProd, String catProd, String statusProd) {
+        midProd = idProd;
+        mnomeProd = nomeProd;
+        mdescProd = descProd;
+        mprecoProd = precoProd;
+        mcatProd = catProd;
+        mstatusProd = statusProd;
+    }
+
     public int getIdProd() {
-        return idProd;
+        return midProd;
     }
 
     public void setIdProd(int idProd) {
-        this.idProd = idProd;
+        this.midProd = idProd;
     }
 
     public String getNomeProd() {
-        return nomeProd;
+        return mnomeProd;
     }
 
     public void setNomeProd(String nomeProd) {
-        this.nomeProd = nomeProd;
+        this.mnomeProd = nomeProd;
     }
 
     public String getDescProd() {
-        return descProd;
+        return mdescProd;
     }
 
     public void setDescProd(String descProd) {
-        this.descProd = descProd;
-    }
-
-    public String getDF() {
-        return DF;
-    }
-
-    public void setDF(String DF) {
-        this.DF = DF;
-    }
-
-    public String getDV() {
-        return DV;
-    }
-
-    public void setDV(String DV) {
-        this.DV = DV;
+        this.mdescProd = descProd;
     }
 
     public double getPrecoProd() {
-        return precoProd;
+        return mprecoProd;
     }
 
     public void setPrecoProd(double precoProd) {
-        this.precoProd = precoProd;
+        this.mprecoProd = precoProd;
     }
 
     public String getCatProd() {
-        return catProd;
+        return mcatProd;
     }
 
     public void setCatProd(String catProd) {
-        this.catProd = catProd;
+        this.mcatProd = catProd;
     }
 
-    public boolean isStatusProd() {
-        return statusProd;
+    public String getStatusProd() {
+        return mstatusProd;
     }
 
-    public void setStatusProd(boolean statusProd) {
-        this.statusProd = statusProd;
+    public void setStatusProd(String statusProd) {
+        this.mstatusProd = statusProd;
     }
 }

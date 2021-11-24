@@ -34,6 +34,7 @@
                 android:layout_gravity="center"
                 android:orientation="vertical">
 
+
             <com.example.tomoesushi.CustomView
                 android:id="@+id/edtName"
                 android:layout_width="wrap_content"

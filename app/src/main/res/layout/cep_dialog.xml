@@ -26,6 +26,17 @@
         android:layout_below="@id/op"
         android:inputType="numberSigned" />
 
+    <Button
+        android:id="@+id/btnCEP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_baseline_done_24"
+        android:layout_toRightOf="@id/cep"
+        android:ems="10"
+        android:layout_below="@id/op"
+        android:layout_centerHorizontal="true"/>
+
     <com.example.tomoesushi.CustomView
         android:id="@+id/log"
         android:layout_width="wrap_content"

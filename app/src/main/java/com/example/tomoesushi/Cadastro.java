@@ -1,4 +1,4 @@
-package com.example.tomoesushi;
+  package com.example.tomoesushi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.tomoesushi.apiCep.Mascara;
 import com.example.tomoesushi.apiCep.RESTService;
+import com.example.tomoesushi.apinterface.Users;
 import com.example.tomoesushi.database.DBHelper;
 import com.example.tomoesushi.models.CEP;
 import com.example.tomoesushi.models.User;
@@ -23,7 +24,16 @@ import com.example.tomoesushi.models.User;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URLEncoder;
+import java.security.cert.CertificateException;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -155,7 +165,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-        salvar.setOnClickListener(new View.OnClickListener() {
+        /*salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 db.addUsuario(new User(nameE.getText().toString(), emailE.getText().toString(),
@@ -167,8 +177,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
                 startActivity(intent);
 
                 finish();
-            }
-        });
+            }       });*/
 
 
         //----------------------CEP--------------------------------------------------------
@@ -217,5 +226,85 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
             }
         });
     }
+    //---------------------------API-------------------------------------------------
+    /*private void post(String nomeUser, String emailUser, String user, String senhaUser, String telUser,
+                      String cepCli, String logradouroCli, int numCli, String complementoCli) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://20.114.208.185/api/cliente")
+                .client(getUnsafeOkHttpClient().build())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        Users retrofitAPI = retrofit.create(Users.class);
+
+        User modal = new User(nomeCli, emailCli,  userCli,  senhaCli,  telefoneCli,
+                cepCli,  logradouroCli,  numCli,  complementoCli);
+
+
+        Call<MuseuClass> call = retrofitAPI.createPost(modal);
+
+        call.enqueue(new Callback<MuseuClass>() {
+            @Override
+            public void onResponse(Call<MuseuClass> call, Response<MuseuClass> response) {
+                Toast.makeText(CadMuseu.this, "Data added to API", Toast.LENGTH_SHORT).show();
+
+                MuseuClass responseFromAPI = response.body();
+
+                String responseString = " idM: " + "nameM : " + responseFromAPI.getNameM() +
+                        "\n" + "addressM : " + responseFromAPI.getAddressM() +
+                        "\n" + "userM : " + responseFromAPI.getUserM();
+
+                Toast.makeText(CadMuseu.this, responseString, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Call<MuseuClass> call, Throwable t) {
+
+                Toast.makeText(CadMuseu.this, "Error found is : " + t.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+    }
+
+    //------Método para o erro de segurança
+    public static OkHttpClient.Builder getUnsafeOkHttpClient() {
+        try {
+            // Create a trust manager that does not validate certificate chains
+            final TrustManager[] trustAllCerts = new TrustManager[]{
+                    new X509TrustManager() {
+                        @Override
+                        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                        }
+
+                        @Override
+                        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                        }
+
+                        @Override
+                        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                            return new java.security.cert.X509Certificate[]{};
+                        }
+                    }
+            };
+            final SSLContext sslContext = SSLContext.getInstance("SSL");
+            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+
+            // Create an ssl socket factory with our all-trusting manager
+            final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+
+            OkHttpClient.Builder builder = new OkHttpClient.Builder();
+            builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
+            builder.hostnameVerifier(new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+                    return true;
+                }
+            });
+            return builder;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }*/
 
 }

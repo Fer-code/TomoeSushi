@@ -27,6 +27,8 @@ import com.google.gson.Gson;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class HomeFragment extends Fragment {
@@ -90,6 +92,33 @@ public class HomeFragment extends Fragment {
                         //JSONObject items = JSONObject.getJSONArray(json);
                         //new Gson().fromJson(response, Produto.class);
 
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonObject = new JSONObject(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        JSONArray itemsArray = null;
+                        try {
+                            itemsArray = jsonObject.getJSONArray("");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        int i = 0;
+                        String nome = null;
+
+                        while (i < itemsArray.length() && (nome == null)) {
+                            try {
+                                JSONObject book = itemsArray.getJSONObject(i);
+                                JSONObject volumeInfo = book.getJSONObject("");
+                                nome = volumeInfo.getString("nomeProd");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            i++;
+                        }
+                        //result.setText(nome);*/
                     }
                 }, new Response.ErrorListener() {
             @Override

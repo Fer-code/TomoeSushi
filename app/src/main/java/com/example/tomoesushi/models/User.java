@@ -5,6 +5,7 @@ public class User {
     public String nomeUser;
     public String emailUser;
     public String telUser;
+    public String user;
     public String senhaUser;
     public String cepUser;
     public String logUser;
@@ -15,19 +16,11 @@ public class User {
 
     }
 
-    public User(int idUser, String nomeUser, String emailUser, String telUser, String senhaUser) {
-        this.idUser = idUser;
+    public User(String nomeUser, String emailUser, String telUser, String user, String senhaUser, String cepUser, String logUser, String complementoUser, String numUser) {
         this.nomeUser = nomeUser;
         this.emailUser = emailUser;
         this.telUser = telUser;
-        this.senhaUser = senhaUser;
-    }
-
-    public User(int idUser, String nomeUser, String emailUser, String telUser, String senhaUser, String cepUser, String logUser, String complementoUser, String numUser) {
-        this.idUser = idUser;
-        this.nomeUser = nomeUser;
-        this.emailUser = emailUser;
-        this.telUser = telUser;
+        this.user = user;
         this.senhaUser = senhaUser;
         this.cepUser = cepUser;
         this.logUser = logUser;
@@ -35,15 +28,34 @@ public class User {
         this.numUser = numUser;
     }
 
-    public User(String nomeUser, String emailUser, String telUser, String senhaUser, String cepUser, String logUser, String complementoUser, String numUser) {
+    public User(String nomeUser, String emailUser, String telUser, String user, String senhaUser) {
         this.nomeUser = nomeUser;
         this.emailUser = emailUser;
         this.telUser = telUser;
+        this.user = user;
+        this.senhaUser = senhaUser;
+    }
+
+    public User(int idUser, String nomeUser, String emailUser, String telUser, String user, String senhaUser, String cepUser, String logUser, String complementoUser, String numUser) {
+        this.idUser = idUser;
+        this.nomeUser = nomeUser;
+        this.emailUser = emailUser;
+        this.telUser = telUser;
+        this.user = user;
         this.senhaUser = senhaUser;
         this.cepUser = cepUser;
         this.logUser = logUser;
         this.complementoUser = complementoUser;
         this.numUser = numUser;
+    }
+
+    public User(int idUser, String nomeUser, String emailUser, String telUser, String user, String senhaUser) {
+        this.idUser = idUser;
+        this.nomeUser = nomeUser;
+        this.emailUser = emailUser;
+        this.telUser = telUser;
+        this.user = user;
+        this.senhaUser = senhaUser;
     }
 
     public String getCepUser() {
@@ -123,5 +135,13 @@ public class User {
 
     public void setSenhaUser(String senhaUser) {
         this.senhaUser = senhaUser;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }

@@ -3,12 +3,14 @@ package com.example.tomoesushi;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
@@ -31,6 +33,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class HomeFragment extends Fragment {
 
     private RequestQueue mQueue;
@@ -38,6 +42,7 @@ public class HomeFragment extends Fragment {
     TextView result;
     CardView cardView;
     Toolbar toolbar;
+    Gson gson;
 
     private int[] mImages = new int[]{
             R.drawable.prato_apres_1,
@@ -52,11 +57,11 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //return inflater.inflate(R.layout.fragment_home, container, false;
 
-        Gson gson = new Gson();
+        gson = new Gson();
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         CarouselView carouselView = (CarouselView) view.findViewById(R.id.carousel_view);
         cardView = (CardView) view.findViewById(R.id.myL);
-        result = (TextView) view.findViewById(R.id.text_view_result) ;
+        result = (TextView) view.findViewById(R.id.text_view_result);
 
         carouselView.setPageCount(mImages.length);
         carouselView.setImageListener(new ImageListener() {
@@ -66,13 +71,13 @@ public class HomeFragment extends Fragment {
             }
         });
 
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), MyLocation.class);
-                    startActivity(intent);
-                }
-            });
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyLocation.class);
+                startActivity(intent);
+            }
+        });
 
             /*
         String json = "{\"idProd\":1,\"nomeProd\":\"Proção pequena de sushi de salmão\",\"descProd\":\"50 sushis em que o arroz é enrrolado em alga marinha e recheado com salmão cru\",\"precoProd\":\"12.05\",\"categoriaProd\":\"prato\",\"statusProd\":\"indisponível\"}";
@@ -86,43 +91,14 @@ public class HomeFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        result.setText("Response is: " + response);
-                        //String json = response;
-                        //Produto produto = gson.fromJson(json, Produto.class);
-                        //JSONObject items = JSONObject.getJSONArray(json);
-                        //new Gson().fromJson(response, Produto.class);
+                        Log.d("Success", response.toString());
+                        tratarResposta(response);
 
-                        JSONObject jsonObject = null;
-                        try {
-                            jsonObject = new JSONObject(response);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        JSONArray itemsArray = null;
-                        try {
-                            itemsArray = jsonObject.getJSONArray("");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                        int i = 0;
-                        String nome = null;
-
-                        while (i < itemsArray.length() && (nome == null)) {
-                            try {
-                                JSONObject book = itemsArray.getJSONObject(i);
-                                JSONObject volumeInfo = book.getJSONObject("");
-                                nome = volumeInfo.getString("nomeProd");
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            i++;
-                        }
-                        //result.setText(nome);*/
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.d("Error", error.toString());
                 result.setText(error.getMessage());
             }
         });
@@ -132,4 +108,72 @@ public class HomeFragment extends Fragment {
 
     }
 
+    public void tratarResposta(String response) {
+        Log.d("TratarResponse", response.toString());
+       // result.setText("Response is: " + response);
+        //String json = response;
+        //Produto produto = gson.fromJson(json, Produto.class);
+        //JSONObject items = JSONObject.getJSONArray(json);
+        //new Gson().fromJson(response, Produto.class);
+
+        /*JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(response);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }*/
+
+        JSONArray itemsArray = null;
+        try {
+            //itemsArray = jsonObject.getJSONArray("");
+            itemsArray = new JSONArray(response);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        int i = 0;
+        String nome = null;
+//definir a lista de produtos no melhor local
+        ArrayList<Produto> listaProduto = new ArrayList<Produto>();
+
+        while (i < itemsArray.length()) {
+            try {
+                JSONObject jProd = itemsArray.getJSONObject(i);
+                Produto p = gson.fromJson(jProd.toString(), Produto.class);
+                listaProduto.add(p);
+
+
+                /*
+                JSONObject volumeInfo = book.getJSONObject("");
+                nome = volumeInfo.getString("nomeProd");*/
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            i++;
+            String itens = String.valueOf(listaProduto.size());
+            Toast.makeText(getContext(), itens,
+                    Toast.LENGTH_SHORT).show();
+            for (Produto p :listaProduto
+                 ) {
+
+                StringBuilder sb=new StringBuilder(result.getText());
+                    sb.append("\n ID: = ");
+                    sb.append(p.midProd);
+                    sb.append("\n Categoria: = ");
+                    sb.append(p.mcatProd);
+                    sb.append("\n Nome: = ");
+                    sb.append(p.mnomeProd);
+                    sb.append("\n Descrição = ");
+                    sb.append(p.mdescProd);
+                    sb.append("\n Preço = ");
+                    sb.append(p.mprecoProd);
+                    sb.append("\n Status = ");
+                    sb.append(p.mstatusProd);
+                    sb.append("\n");
+                result.setText(sb);
+
+            }
+            //result.setText(nome);*/
+        }
+    }
 }

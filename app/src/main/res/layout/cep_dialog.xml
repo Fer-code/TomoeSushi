@@ -17,11 +17,11 @@
 
     <com.example.tomoesushi.CustomView
         android:id="@+id/cep"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:hint="@string/cep"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
         android:ems="10"
         android:layout_below="@id/op"
         android:inputType="numberSigned" />
@@ -33,7 +33,6 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/ic_baseline_done_24"
         android:layout_toRightOf="@id/cep"
-        android:ems="10"
         android:layout_below="@id/op"
         android:layout_centerHorizontal="true"/>
 

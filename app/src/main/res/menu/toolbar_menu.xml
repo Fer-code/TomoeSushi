@@ -10,7 +10,7 @@
         />
 
     <item
-        android:title="u"
+        android:title="?"
         android:id="@+id/help"
         app:showAsAction="always"
         />

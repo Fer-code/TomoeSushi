@@ -9,17 +9,24 @@
     android:orientation="vertical"
     tools:context=".Login">
 
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/branco"/>
+
     <com.example.tomoesushi.CustomView
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/nome"
+        android:layout_marginTop="25dp"
         android:inputType="textPersonName"
         android:textColor="@color/white"
         android:backgroundTint="@color/cardview_light_background"
         android:textColorHint="@color/white"
         android:textStyle="normal" />
+
 
     <EditText
         android:id="@+id/ETsenha"

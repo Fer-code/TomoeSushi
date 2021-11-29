@@ -79,11 +79,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-            /*
-        String json = "{\"idProd\":1,\"nomeProd\":\"Proção pequena de sushi de salmão\",\"descProd\":\"50 sushis em que o arroz é enrrolado em alga marinha e recheado com salmão cru\",\"precoProd\":\"12.05\",\"categoriaProd\":\"prato\",\"statusProd\":\"indisponível\"}";
-        Produto produto = gson.fromJson(json, Produto.class);
-        */
-
         RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
         String url = "http://20.114.208.185/api/produto";
 
@@ -110,22 +105,9 @@ public class HomeFragment extends Fragment {
 
     public void tratarResposta(String response) {
         Log.d("TratarResponse", response.toString());
-       // result.setText("Response is: " + response);
-        //String json = response;
-        //Produto produto = gson.fromJson(json, Produto.class);
-        //JSONObject items = JSONObject.getJSONArray(json);
-        //new Gson().fromJson(response, Produto.class);
-
-        /*JSONObject jsonObject = null;
-        try {
-            jsonObject = new JSONObject(response);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
 
         JSONArray itemsArray = null;
         try {
-            //itemsArray = jsonObject.getJSONArray("");
             itemsArray = new JSONArray(response);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -142,10 +124,6 @@ public class HomeFragment extends Fragment {
                 Produto p = gson.fromJson(jProd.toString(), Produto.class);
                 listaProduto.add(p);
 
-
-                /*
-                JSONObject volumeInfo = book.getJSONObject("");
-                nome = volumeInfo.getString("nomeProd");*/
             } catch (JSONException e) {
                 e.printStackTrace();
             }

@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,32 +22,37 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.tomoesushi.models.Produto;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class Profile extends AppCompatActivity {
 
     private RequestQueue mQueue;
     TextView result;
+    Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
+        gson = new Gson();
         final TextView result = findViewById(R.id.text_view_result);
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://20.114.208.185/api/cliente/user/gabi";
+        String url = "http://20.114.208.185/api/cliente/user/gabi";
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        result.setText("Response is: "+ response);
+                        result.setText("Response is: " + response);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -57,93 +63,56 @@ public class Profile extends AppCompatActivity {
 
         queue.add(stringRequest);
 
-        /*JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
-                new Response.Listener() {
-                    @Override
-                    public void onResponse(Object response) {
-                        String result = "Your IP Address is " + response.getString("ip");
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
-                        result.setText(error.getMessage());
-                    }
-                });
-        mQueue.add(jsonArrayRequest);*/
-       // fetchJsonResponse();
     }
-        /*private void fetchJsonResponse() {
-            // Pass second argument as "null" for GET requests
-            JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, "http://20.114.208.185/api/produto", null,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                String result = "Your name is " + response.getString("nomeProd");
-                                Toast.makeText(Profile.this, result, Toast.LENGTH_SHORT).show();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    VolleyLog.e("Error: ", error.getMessage());
-                }
-            });
-            mQueue.add(req);
-        }*/
-/*
-    private void jsonParse() {
 
-            String url = "http://20.114.208.185/api/produto" + contador;
+    public void tratarResposta(String response) {
+        Log.d("TratarResponse", response.toString());
 
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                JSONArray jsonArray = response.getJSONArray("records");
-
-                                for (int i = 0; i < 10; i++) {
-                                    JSONObject exposicao = jsonArray.getJSONObject(i);
-
-                                    String title = exposicao.getString("title");
-                                    String begindate = exposicao.getString("begindate");
-                                    String enddate = exposicao.getString("enddate");
-                                    String description = exposicao.getString("description");
-                                    String temporalorder = exposicao.getString("temporalorder");
-
-                                    txtViewResult.append(title + "\n");
-
-                                    progressBar.setVisibility(false ? View.VISIBLE : View.GONE);
-
-                                    try {
-                                        db.addExpo(new ExpoClass(title, begindate, enddate, description, temporalorder));
-                                    } catch (Exception e) {
-
-                                    }
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                    }, new Response.ErrorListener() {
-
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
-                }
-            });
-            mQueue.add(request);
-        } else {
-            Toast.makeText(this, "Página não disponível", Toast.LENGTH_SHORT).show();
-            contE.setText("");
-            txtViewResult.setText("");
+        JSONArray itemsArray = null;
+        try {
+            itemsArray = new JSONArray(response);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-    }*/
+
+        int i = 0;
+        String nome = null;
+//definir a lista de produtos no melhor local
+        ArrayList<Produto> listaProduto = new ArrayList<Produto>();
+
+        while (i < itemsArray.length()) {
+            try {
+                JSONObject jProd = itemsArray.getJSONObject(i);
+                Produto p = gson.fromJson(jProd.toString(), Produto.class);
+                listaProduto.add(p);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            i++;
+            String itens = String.valueOf(listaProduto.size());
+            for (Produto p : listaProduto
+            ) {
+
+                StringBuilder sb = new StringBuilder(result.getText());
+                sb.append("\n ID: = ");
+                sb.append(p.midProd);
+                sb.append("\n Categoria: = ");
+                sb.append(p.mcatProd);
+                sb.append("\n Nome: = ");
+                sb.append(p.mnomeProd);
+                sb.append("\n Descrição = ");
+                sb.append(p.mdescProd);
+                sb.append("\n Preço = ");
+                sb.append(p.mprecoProd);
+                sb.append("\n Status = ");
+                sb.append(p.mstatusProd);
+                sb.append("\n");
+                result.setText(sb);
+
+            }
+            //result.setText(nome);*/
+        }
+
+    }
 }

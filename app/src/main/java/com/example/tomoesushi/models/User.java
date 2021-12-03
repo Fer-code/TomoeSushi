@@ -4,97 +4,39 @@ public class User {
     public int idUser;
     public String nomeUser;
     public String emailUser;
-    public String telUser;
-    public String user;
+    public String userCli;
     public String senhaUser;
+    public String telUser;
     public String cepUser;
     public String logUser;
-    public String complementoUser;
     public String numUser;
+    public String complementoUser;
 
-    public User(){
+    public User(){}
 
-    }
-
-    public User(String nomeUser, String emailUser, String telUser, String user, String senhaUser, String cepUser, String logUser, String complementoUser, String numUser) {
-        this.nomeUser = nomeUser;
-        this.emailUser = emailUser;
-        this.telUser = telUser;
-        this.user = user;
-        this.senhaUser = senhaUser;
-        this.cepUser = cepUser;
-        this.logUser = logUser;
-        this.complementoUser = complementoUser;
-        this.numUser = numUser;
-    }
-
-    public User(String nomeUser, String emailUser, String telUser, String user, String senhaUser) {
-        this.nomeUser = nomeUser;
-        this.emailUser = emailUser;
-        this.telUser = telUser;
-        this.user = user;
-        this.senhaUser = senhaUser;
-    }
-
-    public User(int idUser, String nomeUser, String emailUser, String telUser, String user, String senhaUser, String cepUser, String logUser, String complementoUser, String numUser) {
+    public User(int idUser, String nomeUser, String emailUser, String userCli, String senhaUser, String telUser, String cepUser, String logUser, String numUser, String complementoUser) {
         this.idUser = idUser;
         this.nomeUser = nomeUser;
         this.emailUser = emailUser;
-        this.telUser = telUser;
-        this.user = user;
+        this.userCli = userCli;
         this.senhaUser = senhaUser;
+        this.telUser = telUser;
         this.cepUser = cepUser;
         this.logUser = logUser;
-        this.complementoUser = complementoUser;
         this.numUser = numUser;
-    }
-
-    public User(int idUser, String nomeUser, String emailUser, String telUser, String user, String senhaUser) {
-        this.idUser = idUser;
-        this.nomeUser = nomeUser;
-        this.emailUser = emailUser;
-        this.telUser = telUser;
-        this.user = user;
-        this.senhaUser = senhaUser;
-    }
-
-    public String getCepUser() {
-        return cepUser;
-    }
-
-    public void setCepUser(String cepUser) {
-        this.cepUser = cepUser;
-    }
-
-    public String getLogUser() {
-        return logUser;
-    }
-
-    public void setLogUser(String logUser) {
-        this.logUser = logUser;
-    }
-
-    public String getComplementoUser() {
-        return complementoUser;
-    }
-
-    public void setComplementoUser(String complementoUser) {
         this.complementoUser = complementoUser;
     }
 
-    public String getNumUser() {
-        return numUser;
-    }
-
-    public void setNumUser(String numUser) {
-        this.numUser = numUser;
-    }
-
-    public User(String nomeUser, String emailUser, String telUser, String senhaUser) {
+    public User(String nomeUser, String emailUser, String userCli, String senhaUser, String telUser, String cepUser, String logUser, String numUser, String complementoUser) {
         this.nomeUser = nomeUser;
         this.emailUser = emailUser;
-        this.telUser = telUser;
+        this.userCli = userCli;
         this.senhaUser = senhaUser;
+        this.telUser = telUser;
+        this.cepUser = cepUser;
+        this.logUser = logUser;
+        this.numUser = numUser;
+        this.complementoUser = complementoUser;
     }
 
     public int getIdUser() {
@@ -121,12 +63,12 @@ public class User {
         this.emailUser = emailUser;
     }
 
-    public String getTelUser() {
-        return telUser;
+    public String getUserCli() {
+        return userCli;
     }
 
-    public void setTelUser(String telUser) {
-        this.telUser = telUser;
+    public void setUserCli(String userCli) {
+        this.userCli = userCli;
     }
 
     public String getSenhaUser() {
@@ -137,11 +79,43 @@ public class User {
         this.senhaUser = senhaUser;
     }
 
-    public String getUser() {
-        return user;
+    public String getTelUser() {
+        return telUser;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setTelUser(String telUser) {
+        this.telUser = telUser;
+    }
+
+    public String getCepUser() {
+        return cepUser;
+    }
+
+    public void setCepUser(String cepUser) {
+        this.cepUser = cepUser;
+    }
+
+    public String getLogUser() {
+        return logUser;
+    }
+
+    public void setLogUser(String logUser) {
+        this.logUser = logUser;
+    }
+
+    public String getNumUser() {
+        return numUser;
+    }
+
+    public void setNumUser(String numUser) {
+        this.numUser = numUser;
+    }
+
+    public String getComplementoUser() {
+        return complementoUser;
+    }
+
+    public void setComplementoUser(String complementoUser) {
+        this.complementoUser = complementoUser;
     }
 }

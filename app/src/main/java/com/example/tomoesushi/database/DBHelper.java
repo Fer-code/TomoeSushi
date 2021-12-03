@@ -45,12 +45,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + USUARIO_TABLE_NAME + ";" );
+        db.execSQL("DROP TABLE IF EXISTS " + USUARIO_TABLE_NAME + ";");
         onCreate(db);
     }
+}
 
     //-----------------INSERTS----------------------------------------------------------------------
-   public void addUsuario (User usuario){
+  /* public void addUsuario (User usuario){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -130,5 +131,5 @@ public class DBHelper extends SQLiteOpenHelper {
     //----------------DELETE ALL--------------------------------------------------------------------
 
     //----------------DELETE WHERE------------------------------------------------------------------
+*/
 
-}

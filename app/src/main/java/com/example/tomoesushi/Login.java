@@ -32,10 +32,5 @@ public class Login extends AppCompatActivity {
     public void Cadastrar(View c){
         Intent cad = new Intent(this, Cadastro.class);
         startActivity(cad);
-        /*List<User> user = db.listAllUsers();
-        for (int i = 0; i < user.size(); i++) {
-            Log.d("User", ""+user.get(i));
-
-        }*/
     }
 }

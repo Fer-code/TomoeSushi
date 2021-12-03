@@ -14,6 +14,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.tomoesushi.apiCep.Mascara;
 import com.example.tomoesushi.apiCep.RESTService;
 import com.example.tomoesushi.apinterface.Users;
@@ -25,6 +30,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.security.cert.CertificateException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -44,8 +51,10 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
 
     private final String URL_CEP = "https://viacep.com.br/ws/";
 
-    EditText nameE, telE, emailE, senhaE, confSenha, cepE, logE, comE, numE ;
+    EditText nameE, userE, telE, emailE, senhaE, confSenha, cepE, logE, comE, numE ;
     private Button ok, pular, salvar, btnCEP;
+    RequestQueue requestQueue;
+
 
     private Retrofit retrofitCEP;
     private AlertDialog.Builder dialogBuilder;
@@ -62,6 +71,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
 
         ok = findViewById(R.id.button2);
         nameE = findViewById(R.id.edtName);
+        userE = findViewById(R.id.edtUser);
         emailE = findViewById(R.id.edtEmail);
         telE = findViewById(R.id.edtTel);
         senhaE = findViewById(R.id.edtSenha);
@@ -72,9 +82,9 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(nameE.getText().toString().isEmpty() || emailE.getText().toString().isEmpty() ||
-                        senhaE.getText().toString().isEmpty() || telE.getText().toString().isEmpty() ||
-                        confSenha.getText().toString().isEmpty() ){
+                if(nameE.getText().toString().isEmpty() || userE.getText().toString().isEmpty()
+                        || emailE.getText().toString().isEmpty() || senhaE.getText().toString().isEmpty()
+                        || telE.getText().toString().isEmpty() || confSenha.getText().toString().isEmpty() ){
                     Toast.makeText(Cadastro.this, "Insira os dados corretamente", Toast.LENGTH_SHORT).show();
                 }
                 else if  (!senhaE.getText().toString().equals(confSenha.getText().toString())){
@@ -84,17 +94,16 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
                 {
                     Toast.makeText(Cadastro.this, "Email inserido incorretamente", Toast.LENGTH_SHORT).show();
                 }
-                else if (db.ValidacaoEmail(emailE.getText().toString())) {
+                /*else if (db.ValidacaoEmail(emailE.getText().toString())) {
                     Toast.makeText(Cadastro.this, "Email já utilizado", Toast.LENGTH_SHORT).show();
-                }
+                }*/
                 else {
-
-                    createNewContactDialog();
+                    CadastraUser();
+                    //createNewContactDialog();
                 }
             }
         });
     }
-
 
     private Boolean validarCampos() {
 
@@ -154,9 +163,10 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         pular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.addUsuario(new User(nameE.getText().toString(), emailE.getText().toString(),
-                        telE.getText().toString(), senhaE.getText().toString()));
-                Toast.makeText(Cadastro.this, "adicionado com sucesso", Toast.LENGTH_SHORT).show();
+                /*db.addUsuario(new User(nameE.getText().toString(), emailE.getText().toString(),
+                        telE.getText().toString(), senhaE.getText().toString()));*/
+                /*CadastraUser (nameE.getText().toString(), emailE.getText().toString(), userE.getText().toString(),
+                        senhaE.getText().toString(),  telE.getText().toString()); */
 
                 Intent intent = new Intent(Cadastro.this, Login.class);
                 startActivity(intent);
@@ -165,19 +175,20 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-        /*salvar.setOnClickListener(new View.OnClickListener() {
+        salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.addUsuario(new User(nameE.getText().toString(), emailE.getText().toString(),
+                /*db.addUsuario(new User(nameE.getText().toString(), emailE.getText().toString(),
                         telE.getText().toString(), senhaE.getText().toString(), cepE.getText().toString(),
-                        logE.getText().toString(), comE.getText().toString(), numE.getText().toString()));
-                Toast.makeText(Cadastro.this, "adicionado com sucesso", Toast.LENGTH_SHORT).show();
+                        logE.getText().toString(), comE.getText().toString(), numE.getText().toString()));*/
+
 
                 Intent intent = new Intent(Cadastro.this, Login.class);
                 startActivity(intent);
 
                 finish();
-            }       });*/
+            }
+        });
 
 
         //----------------------CEP--------------------------------------------------------
@@ -190,17 +201,12 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
                 .build();
 
         btnCEP.setOnClickListener(this);
-        //---------------------------------------------------------------------------------
-
     }
 
+    //---------------------------------------------------------------------------------
     private boolean validateEmailFormat(final String email) {
         if (android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            return false;
-        }
-        return true;
-
-    }
+            return false; }return true; }
     //----------------------CEP---------------------------------------------------
     private void consultarCEP() {
         String sCep = cepE.getText().toString().trim();
@@ -218,92 +224,75 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
                     //TODO desabilitar escrita nos campos com preenchimento automático
                 }
             }
-
             @Override
             public void onFailure(Call<CEP> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Ocorreu um erro ao tentar consultar o CEP. Erro: " + t.getMessage(), Toast.LENGTH_LONG).show();
-
             }
         });
     }
     //---------------------------API-------------------------------------------------
-    /*private void post(String nomeUser, String emailUser, String user, String senhaUser, String telUser,
-                      String cepCli, String logradouroCli, int numCli, String complementoCli) {
+    public void CadastraUser(){
+        String uri = "http://20.114.208.185/api/cliente";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, uri,
+                response -> Toast.makeText(Cadastro.this, "Success", Toast.LENGTH_LONG).show(),
+                error -> Toast.makeText(Cadastro.this, ""+error.getMessage(), Toast.LENGTH_LONG).show()){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError{
+                Map<String, String> params = new HashMap<>();
+                params.put("nomeCli","popi");
+                params.put("emailCli","popi@gmail.com");
+                params.put("userCli","popilo");
+                params.put("senhaCli","popi123");
+                params.put("telefoneCli","11972545587");
+                params.put("cepCli","");
+                params.put("logradouroCli","");
+                params.put("numCli", String.valueOf(0));
+                params.put("complementoCli","");
+                return params;
+            }
+        };
+        requestQueue = Volley.newRequestQueue(Cadastro.this);
+        requestQueue.add(stringRequest);
+    }
+
+   /*private void CadastraUser() {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://20.114.208.185/api/cliente")
-                .client(getUnsafeOkHttpClient().build())
+                .baseUrl("http://20.114.208.185/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         Users retrofitAPI = retrofit.create(Users.class);
 
-        User modal = new User(nomeCli, emailCli,  userCli,  senhaCli,  telefoneCli,
-                cepCli,  logradouroCli,  numCli,  complementoCli);
+        String tste = "dedsd";
+        String s = "s";
+        String d = "d";
+        int n = 909;
+
+        User modal = new User(nameE.getText().toString(), emailE.getText().toString(), userE.getText().toString(),
+                senhaE.getText().toString(),  telE.getText().toString(),
+                tste, s, n, d);
 
 
-        Call<MuseuClass> call = retrofitAPI.createPost(modal);
-
-        call.enqueue(new Callback<MuseuClass>() {
-            @Override
-            public void onResponse(Call<MuseuClass> call, Response<MuseuClass> response) {
-                Toast.makeText(CadMuseu.this, "Data added to API", Toast.LENGTH_SHORT).show();
-
-                MuseuClass responseFromAPI = response.body();
-
-                String responseString = " idM: " + "nameM : " + responseFromAPI.getNameM() +
-                        "\n" + "addressM : " + responseFromAPI.getAddressM() +
-                        "\n" + "userM : " + responseFromAPI.getUserM();
-
-                Toast.makeText(CadMuseu.this, responseString, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onFailure(Call<MuseuClass> call, Throwable t) {
-
-                Toast.makeText(CadMuseu.this, "Error found is : " + t.getMessage(), Toast.LENGTH_LONG).show();
-
-            }
-        });
-    }
-
-    //------Método para o erro de segurança
-    public static OkHttpClient.Builder getUnsafeOkHttpClient() {
         try {
-            // Create a trust manager that does not validate certificate chains
-            final TrustManager[] trustAllCerts = new TrustManager[]{
-                    new X509TrustManager() {
-                        @Override
-                        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
-                        }
+            Call<User> call = retrofitAPI.createPost(modal);
 
-                        @Override
-                        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
-                        }
-
-                        @Override
-                        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                            return new java.security.cert.X509Certificate[]{};
-                        }
-                    }
-            };
-            final SSLContext sslContext = SSLContext.getInstance("SSL");
-            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
-
-            // Create an ssl socket factory with our all-trusting manager
-            final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
-
-            OkHttpClient.Builder builder = new OkHttpClient.Builder();
-            builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
-            builder.hostnameVerifier(new HostnameVerifier() {
+            call.enqueue(new Callback<User>() {
                 @Override
-                public boolean verify(String hostname, SSLSession session) {
-                    return true;
+                public void onResponse(Call<User> call, Response<User> response) {
+                }
+
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
+
+                    Toast.makeText(Cadastro.this, "Error found is : " + t.getMessage(), Toast.LENGTH_LONG).show();
+
                 }
             });
-            return builder;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+
+        }
+        catch (Exception e){
+            Toast.makeText(this, ""+e, Toast.LENGTH_LONG).show();
         }
     }*/
 

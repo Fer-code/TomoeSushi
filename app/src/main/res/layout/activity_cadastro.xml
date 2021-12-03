@@ -45,7 +45,17 @@
                 android:textColorHint="@color/black"
                 android:hint="@string/nome"/>
 
-            <com.example.tomoesushi.CustomView
+                <com.example.tomoesushi.CustomView
+                    android:id="@+id/edtUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:layout_marginTop="10dp"
+                    android:textColorHint="@color/black"
+                    android:hint="@string/user"/>
+
+                <com.example.tomoesushi.CustomView
                 android:id="@+id/edtEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -7,20 +7,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pedidos"
-        android:textSize="28sp"/>
-
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="6dp"
-        android:background="?android:attr/listDivider" />
-
+        android:gravity="center"
+        android:hint="@string/Pedido"
+        android:textColorHint="@color/white"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp" />
 
 
 </LinearLayout>

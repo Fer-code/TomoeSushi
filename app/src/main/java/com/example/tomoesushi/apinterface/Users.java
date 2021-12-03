@@ -7,6 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface Users {
-    @POST("users")
+    @POST("cliente")
     Call<User> createPost(@Body User user);
+
 }

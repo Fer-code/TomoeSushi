@@ -1,15 +1,27 @@
 package com.example.tomoesushi.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class User {
+    @JsonProperty("IdCli")
     public int idUser;
+    @JsonProperty("NomeCli")
     public String nomeUser;
+    @JsonProperty("EmailCli")
     public String emailUser;
+    @JsonProperty("UserCli")
     public String userCli;
+    @JsonProperty("SenhaCli")
     public String senhaUser;
+    @JsonProperty("TelefoneCli")
     public String telUser;
+    @JsonProperty("CepCli")
     public String cepUser;
+    @JsonProperty("LogradouroCli")
     public String logUser;
+    @JsonProperty("NumCli")
     public String numUser;
+    @JsonProperty("ComplementoCli")
     public String complementoUser;
 
     public User(){}

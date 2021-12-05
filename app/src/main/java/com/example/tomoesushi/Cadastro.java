@@ -25,6 +25,8 @@ import com.example.tomoesushi.apinterface.Users;
 import com.example.tomoesushi.database.DBHelper;
 import com.example.tomoesushi.models.CEP;
 import com.example.tomoesushi.models.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
@@ -50,6 +52,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Cadastro extends AppCompatActivity implements View.OnClickListener  {
 
     private final String URL_CEP = "https://viacep.com.br/ws/";
+    private final ObjectMapper mapper = new ObjectMapper();
 
     EditText nameE, userE, telE, emailE, senhaE, confSenha, cepE, logE, comE, numE ;
     private Button ok, pular, salvar, btnCEP;
@@ -98,7 +101,18 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
                     Toast.makeText(Cadastro.this, "Email já utilizado", Toast.LENGTH_SHORT).show();
                 }*/
                 else {
-                    CadastraUser();
+                    User user = new User();
+                    user.nomeUser = "Gabi";
+                    user.emailUser = "gabi@gmail.com";
+                    user.userCli = "gabi123";
+                    user.senhaUser = "gabi123";
+                    user.telUser = "123456789";
+                    user.cepUser = "06140000";
+                    user.logUser = "Rua Agostinho Navarro";
+                    user.numUser = "971";
+                    user.complementoUser = "Casa cinza";
+
+                    CadastraUser(user);
                     //createNewContactDialog();
                 }
             }
@@ -231,24 +245,23 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         });
     }
     //---------------------------API-------------------------------------------------
-    public void CadastraUser(){
+    public void CadastraUser(User user){
         String uri = "http://20.114.208.185/api/cliente";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, uri,
                 response -> Toast.makeText(Cadastro.this, "Success", Toast.LENGTH_LONG).show(),
                 error -> Toast.makeText(Cadastro.this, ""+error.getMessage(), Toast.LENGTH_LONG).show()){
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError{
-                Map<String, String> params = new HashMap<>();
-                params.put("nomeCli","popi");
-                params.put("emailCli","popi@gmail.com");
-                params.put("userCli","popilo");
-                params.put("senhaCli","popi123");
-                params.put("telefoneCli","11972545587");
-                params.put("cepCli","");
-                params.put("logradouroCli","");
-                params.put("numCli", String.valueOf(0));
-                params.put("complementoCli","");
-                return params;
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return mapper.writeValueAsBytes(user);
+                } catch (JsonProcessingException e) {
+                    throw new AuthFailureError("Ocorreu um erro ao deserializar o objeto");
+                }
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
             }
         };
         requestQueue = Volley.newRequestQueue(Cadastro.this);

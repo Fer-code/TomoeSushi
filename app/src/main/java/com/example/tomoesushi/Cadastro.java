@@ -1,4 +1,4 @@
-  package com.example.tomoesushi;
+package com.example.tomoesushi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -49,12 +49,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Cadastro extends AppCompatActivity implements View.OnClickListener  {
+public class Cadastro extends AppCompatActivity implements View.OnClickListener {
 
     private final String URL_CEP = "https://viacep.com.br/ws/";
     private final ObjectMapper mapper = new ObjectMapper();
 
-    EditText nameE, userE, telE, emailE, senhaE, confSenha, cepE, logE, comE, numE ;
+    EditText nameE, userE, telE, emailE, senhaE, confSenha, cepE, logE, comE, numE;
     private Button ok, pular, salvar, btnCEP;
     RequestQueue requestQueue;
 
@@ -81,39 +81,21 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         confSenha = findViewById(R.id.edtConfSenha);
         btnCEP = findViewById(R.id.btnCEP);
 
-        
+
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(nameE.getText().toString().isEmpty() || userE.getText().toString().isEmpty()
+                if (nameE.getText().toString().isEmpty() || userE.getText().toString().isEmpty()
                         || emailE.getText().toString().isEmpty() || senhaE.getText().toString().isEmpty()
-                        || telE.getText().toString().isEmpty() || confSenha.getText().toString().isEmpty() ){
+                        || telE.getText().toString().isEmpty() || confSenha.getText().toString().isEmpty()) {
                     Toast.makeText(Cadastro.this, "Insira os dados corretamente", Toast.LENGTH_SHORT).show();
-                }
-                else if  (!senhaE.getText().toString().equals(confSenha.getText().toString())){
+                } else if (!senhaE.getText().toString().equals(confSenha.getText().toString())) {
                     Toast.makeText(Cadastro.this, "As senhas não correspondem", Toast.LENGTH_SHORT).show();
-                }
-                else if (validateEmailFormat(emailE.getText().toString())  == true)
-                {
+                } else if (validateEmailFormat(emailE.getText().toString()) == true) {
                     Toast.makeText(Cadastro.this, "Email inserido incorretamente", Toast.LENGTH_SHORT).show();
                 }
-                /*else if (db.ValidacaoEmail(emailE.getText().toString())) {
-                    Toast.makeText(Cadastro.this, "Email já utilizado", Toast.LENGTH_SHORT).show();
-                }*/
                 else {
-                    User user = new User();
-                    user.nomeUser = "Gabi";
-                    user.emailUser = "gabi@gmail.com";
-                    user.userCli = "gabi123";
-                    user.senhaUser = "gabi123";
-                    user.telUser = "123456789";
-                    user.cepUser = "06140000";
-                    user.logUser = "Rua Agostinho Navarro";
-                    user.numUser = "971";
-                    user.complementoUser = "Casa cinza";
-
-                    CadastraUser(user);
-                    //createNewContactDialog();
+                    createNewContactDialog();
                 }
             }
         });
@@ -157,7 +139,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
     }
 
     //Dialog
-    public void createNewContactDialog(){
+    public void createNewContactDialog() {
         dialogBuilder = new AlertDialog.Builder(this);
         final View contactPopupView = getLayoutInflater().inflate(R.layout.cep_dialog, null);
 
@@ -166,8 +148,9 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         comE = (EditText) contactPopupView.findViewById(R.id.comp);
         numE = (EditText) contactPopupView.findViewById(R.id.num);
         pular = (Button) contactPopupView.findViewById(R.id.pular);
-        salvar = (Button)contactPopupView.findViewById(R.id.save);
-        btnCEP = (Button)contactPopupView.findViewById(R.id.btnCEP);
+        salvar = (Button) contactPopupView.findViewById(R.id.save);
+        btnCEP = (Button) contactPopupView.findViewById(R.id.btnCEP);
+
 
 
         dialogBuilder.setView(contactPopupView);
@@ -177,11 +160,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         pular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*db.addUsuario(new User(nameE.getText().toString(), emailE.getText().toString(),
-                        telE.getText().toString(), senhaE.getText().toString()));*/
-                /*CadastraUser (nameE.getText().toString(), emailE.getText().toString(), userE.getText().toString(),
-                        senhaE.getText().toString(),  telE.getText().toString()); */
-
+                passClass();
                 Intent intent = new Intent(Cadastro.this, Login.class);
                 startActivity(intent);
 
@@ -192,10 +171,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*db.addUsuario(new User(nameE.getText().toString(), emailE.getText().toString(),
-                        telE.getText().toString(), senhaE.getText().toString(), cepE.getText().toString(),
-                        logE.getText().toString(), comE.getText().toString(), numE.getText().toString()));*/
-
+                passClass();
 
                 Intent intent = new Intent(Cadastro.this, Login.class);
                 startActivity(intent);
@@ -217,10 +193,39 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         btnCEP.setOnClickListener(this);
     }
 
+    public void passClass(){
+        String nomePass = nameE.getText().toString();
+        String emailPass = emailE.getText().toString();
+        String userPass= userE.getText().toString();
+        String senhaPass = senhaE.getText().toString();
+        String telPass = telE.getText().toString();
+        String cepPass = cepE.getText().toString();
+        String logPass = logE.getText().toString();
+        String numPass = numE.getText().toString();
+        String compPass = comE.getText().toString();
+
+        User user = new User();
+        user.nomeUser = nomePass;
+        user.emailUser = emailPass;
+        user.userCli = userPass;
+        user.senhaUser = senhaPass;
+        user.telUser = telPass;
+        user.cepUser = cepPass;
+        user.logUser = logPass;
+        user.numUser = numPass;
+        user.complementoUser = compPass;
+
+        CadastraUser(user);
+    }
+
     //---------------------------------------------------------------------------------
     private boolean validateEmailFormat(final String email) {
         if (android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            return false; }return true; }
+            return false;
+        }
+        return true;
+    }
+
     //----------------------CEP---------------------------------------------------
     private void consultarCEP() {
         String sCep = cepE.getText().toString().trim();
@@ -238,18 +243,20 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
                     //TODO desabilitar escrita nos campos com preenchimento automático
                 }
             }
+
             @Override
             public void onFailure(Call<CEP> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Ocorreu um erro ao tentar consultar o CEP. Erro: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
+
     //---------------------------API-------------------------------------------------
-    public void CadastraUser(User user){
+    public void CadastraUser(User user) {
         String uri = "http://20.114.208.185/api/cliente";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, uri,
                 response -> Toast.makeText(Cadastro.this, "Success", Toast.LENGTH_LONG).show(),
-                error -> Toast.makeText(Cadastro.this, ""+error.getMessage(), Toast.LENGTH_LONG).show()){
+                error -> Toast.makeText(Cadastro.this, "" + error.getMessage(), Toast.LENGTH_LONG).show()) {
             @Override
             public byte[] getBody() throws AuthFailureError {
                 try {
@@ -267,46 +274,4 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         requestQueue = Volley.newRequestQueue(Cadastro.this);
         requestQueue.add(stringRequest);
     }
-
-   /*private void CadastraUser() {
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://20.114.208.185/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        Users retrofitAPI = retrofit.create(Users.class);
-
-        String tste = "dedsd";
-        String s = "s";
-        String d = "d";
-        int n = 909;
-
-        User modal = new User(nameE.getText().toString(), emailE.getText().toString(), userE.getText().toString(),
-                senhaE.getText().toString(),  telE.getText().toString(),
-                tste, s, n, d);
-
-
-        try {
-            Call<User> call = retrofitAPI.createPost(modal);
-
-            call.enqueue(new Callback<User>() {
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                }
-
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-
-                    Toast.makeText(Cadastro.this, "Error found is : " + t.getMessage(), Toast.LENGTH_LONG).show();
-
-                }
-            });
-
-        }
-        catch (Exception e){
-            Toast.makeText(this, ""+e, Toast.LENGTH_LONG).show();
-        }
-    }*/
-
 }

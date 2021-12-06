@@ -32,32 +32,53 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import okhttp3.ResponseBody;
+import retrofit2.http.Body;
+
 public class Profile extends AppCompatActivity {
 
     private RequestQueue mQueue;
     TextView result;
     Gson gson;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         gson = new Gson();
-         result = findViewById(R.id.text_view_result);
+        result = findViewById(R.id.text_view_result);
+        final JSONArray[] itemsArray = new JSONArray[1];
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://20.114.208.185/api/cliente";
+        String url = "http://20.114.208.185/api/cliente/user/gabi";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Log.d("Success", response.toString());
-                        tratarRespostaProfile(response);
-                        //result.setText(response);
 
-                    }
-                }, new Response.ErrorListener() {
+                        try {
+                            itemsArray[0] = new JSONArray(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        int i =1;
+                        while (i < itemsArray[0].length()) {
+                            try {
+                                JSONObject jProd = itemsArray[0].getJSONObject(i);
+                                User user = gson.fromJson(jProd.toString(), User.class);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+
+                            result.setText(response);
+                        }
+                }}, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("Error", error.toString());
@@ -67,60 +88,6 @@ public class Profile extends AppCompatActivity {
         queue.add(stringRequest);
 
     }
-
-    public void tratarRespostaProfile(String response) {
-        Log.d("TratarResponse", response.toString());
-
-        JSONArray itemsArray = null;
-        try {
-            itemsArray = new JSONArray(response);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        int i = 0;
-        String nome = null;
-        ArrayList<User> listaProduto = new ArrayList<User>();
-
-        while (i < itemsArray.length()) {
-            try {
-                JSONObject jProd = itemsArray.getJSONObject(i);
-                User p = gson.fromJson(jProd.toString(), User.class);
-                listaProduto.add(p);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            i++;
-            for (User p :listaProduto
-            ) {
-
-                StringBuilder sb=new StringBuilder(result.getText());
-                sb.append("\n ID: = ");
-                sb.append(p.idUser);
-                sb.append("\n Nome: = ");
-                sb.append(p.nomeUser);
-                sb.append("\n email: = ");
-                sb.append(p.emailUser);
-                sb.append("\n User = ");
-                sb.append(p.userCli);
-                sb.append("\n Senha = ");
-                sb.append(p.senhaUser);
-                sb.append("\n Telefone = ");
-                sb.append(p.telUser);
-                sb.append("\n Telefone = ");
-                sb.append(p.cepUser);
-                sb.append("\n Telefone = ");
-                sb.append(p.logUser);
-                sb.append("\n Telefone = ");
-                sb.append(p.numUser);
-                sb.append("\n Telefone = ");
-                sb.append(p.complementoUser);
-                sb.append("\n");
-                result.setText(sb);
-
-            }
-            //result.setText(nome);*/
-        }
-    }
 }
+
+

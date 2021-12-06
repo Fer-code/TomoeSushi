@@ -115,7 +115,7 @@ public class HomeFragment extends Fragment {
 
         int i = 0;
         String nome = null;
-//definir a lista de produtos no melhor local
+        //definir a lista de produtos no melhor local
         ArrayList<Produto> listaProduto = new ArrayList<Produto>();
 
         while (i < itemsArray.length()) {

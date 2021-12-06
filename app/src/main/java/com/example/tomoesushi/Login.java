@@ -42,30 +42,33 @@ public class Login extends AppCompatActivity {
 
     public void Logar(View view) {
 
-        User us = new User();
-        us.setUserCli(txtCampoUsuario.getText().toString());
+        /*User us = new User();
+       /* us.setUserCli(txtCampoUsuario.getText().toString());
         us.setSenhaUser(txtCampoSenha.getText().toString());
+
+        us.setUserCli("aurora");
+        us.setSenhaUser("a");
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
 
-        User usuarioLogado = logarUsuario(us);
+        User usuarioLogado = Conexao.logarUsuario(us);
 
         if(usuarioLogado.getIdUser() == 0 && usuarioLogado.getUserCli() == null) {
             Toast.makeText(this, "Usuario inválido", Toast.LENGTH_SHORT).show();
-        } else {
-            Intent intentEntrar = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intentEntrar);
-        }
+        } else {*/
+        Intent intentEntrar = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intentEntrar);
+        //}
 
     }
 
     //--------------------------------------------------------------------------
-    static User logarUsuario(User usuario) {
+    /*static User logarUsuario(User usuario) {
         HttpUser client = new HttpUser();
         String responseBody = client.doRequest("http://20.114.208.185/api/cliente/login", "POST", new HashMap<>(), usuario);
 //        Log.d(LOG_TAG, responseBody);
         return new Gson().fromJson(responseBody, User.class);
-    }
+    }*/
 }

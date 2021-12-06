@@ -2,45 +2,29 @@ package com.example.tomoesushi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.tomoesushi.models.Produto;
 import com.example.tomoesushi.models.User;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-
-import okhttp3.ResponseBody;
-import retrofit2.http.Body;
 
 public class Profile extends AppCompatActivity {
 
     private RequestQueue mQueue;
-    TextView result;
+    TextView result, nome, email, tel, e;
     Gson gson;
     User user;
+    JSONArray[] itemsArray = new JSONArray[1];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +32,9 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         gson = new Gson();
         result = findViewById(R.id.text_view_result);
-        final JSONArray[] itemsArray = new JSONArray[1];
+        nome = findViewById(R.id.NomeAlterarTXT);
+        email = findViewById(R.id.TelAlterarTXT);
+        tel = findViewById(R.id.EmailAlterarTXT);
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http://20.114.208.185/api/cliente/user/gabi";
@@ -58,27 +44,11 @@ public class Profile extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Log.d("Success", response.toString());
-
-                        try {
-                            itemsArray[0] = new JSONArray(response);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                        int i =1;
-                        while (i < itemsArray[0].length()) {
-                            try {
-                                JSONObject jProd = itemsArray[0].getJSONObject(i);
-                                User user = gson.fromJson(jProd.toString(), User.class);
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
+                        Perfil(response);
 
 
-                            result.setText(response);
-                        }
-                }}, new Response.ErrorListener() {
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("Error", error.toString());
@@ -87,6 +57,24 @@ public class Profile extends AppCompatActivity {
         });
         queue.add(stringRequest);
 
+
+    }
+
+    public void Perfil(String response) {
+
+        JSONObject jsonObject = null;
+        Log.d("Success Perfil", response.toString());
+        try {
+            jsonObject = new JSONObject(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+
+        user = gson.fromJson(jsonObject.toString(), User.class);
+        nome.setText(user.getNomeCli());
+        email.setText(user.getEmailCli());
+        tel.setText(user.getTelefoneCli());
     }
 }
 

@@ -3,76 +3,76 @@ package com.example.tomoesushi.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
-    @JsonProperty("IdCli")
-    public int idUser;
-    @JsonProperty("NomeCli")
-    public String nomeUser;
-    @JsonProperty("EmailCli")
-    public String emailUser;
-    @JsonProperty("UserCli")
+    @JsonProperty("idCli")
+    public int idCli;
+    @JsonProperty("nomeCli")
+    public String nomeCli;
+    @JsonProperty("emailCli")
+    public String emailCli;
+    @JsonProperty("userCli")
     public String userCli;
-    @JsonProperty("SenhaCli")
-    public String senhaUser;
-    @JsonProperty("TelefoneCli")
-    public String telUser;
-    @JsonProperty("CepCli")
-    public String cepUser;
+    @JsonProperty("senhaCli")
+    public String senhaCli;
+    @JsonProperty("telefoneCli")
+    public String telefoneCli;
+    @JsonProperty("cepCli")
+    public String cepCli;
     @JsonProperty("LogradouroCli")
-    public String logUser;
-    @JsonProperty("NumCli")
-    public String numUser;
-    @JsonProperty("ComplementoCli")
-    public String complementoUser;
+    public String logradouroCli;
+    @JsonProperty("numCli")
+    public String numCli;
+    @JsonProperty("complementoCli")
+    public String complementoCli;
 
     public User(){}
 
-    public User(int idUser, String nomeUser, String emailUser, String userCli, String senhaUser, String telUser, String cepUser, String logUser, String numUser, String complementoUser) {
-        this.idUser = idUser;
-        this.nomeUser = nomeUser;
-        this.emailUser = emailUser;
+    public User(int idCli, String nomeCli, String emailCli, String userCli, String senhaCli, String telefoneCli, String cepCli, String logradouroCli, String numCli, String complementoCli) {
+        this.idCli = idCli;
+        this.nomeCli = nomeCli;
+        this.emailCli = emailCli;
         this.userCli = userCli;
-        this.senhaUser = senhaUser;
-        this.telUser = telUser;
-        this.cepUser = cepUser;
-        this.logUser = logUser;
-        this.numUser = numUser;
-        this.complementoUser = complementoUser;
+        this.senhaCli = senhaCli;
+        this.telefoneCli = telefoneCli;
+        this.cepCli = cepCli;
+        this.logradouroCli = logradouroCli;
+        this.numCli = numCli;
+        this.complementoCli = complementoCli;
     }
 
-    public User(String nomeUser, String emailUser, String userCli, String senhaUser, String telUser, String cepUser, String logUser, String numUser, String complementoUser) {
-        this.nomeUser = nomeUser;
-        this.emailUser = emailUser;
+    public User(String nomeCli, String emailCli, String userCli, String senhaCli, String telefoneCli, String cepCli, String logradouroCli, String numCli, String complementoCli) {
+        this.nomeCli = nomeCli;
+        this.emailCli = emailCli;
         this.userCli = userCli;
-        this.senhaUser = senhaUser;
-        this.telUser = telUser;
-        this.cepUser = cepUser;
-        this.logUser = logUser;
-        this.numUser = numUser;
-        this.complementoUser = complementoUser;
+        this.senhaCli = senhaCli;
+        this.telefoneCli = telefoneCli;
+        this.cepCli = cepCli;
+        this.logradouroCli = logradouroCli;
+        this.numCli = numCli;
+        this.complementoCli = complementoCli;
     }
 
     public int getIdUser() {
-        return idUser;
+        return idCli;
     }
 
     public void setIdUser(int idUser) {
-        this.idUser = idUser;
+        this.idCli = idUser;
     }
 
-    public String getNomeUser() {
-        return nomeUser;
+    public String getNomeCli() {
+        return nomeCli;
     }
 
-    public void setNomeUser(String nomeUser) {
-        this.nomeUser = nomeUser;
+    public void setNomeCli(String nomeCli) {
+        this.nomeCli = nomeCli;
     }
 
-    public String getEmailUser() {
-        return emailUser;
+    public String getEmailCli() {
+        return emailCli;
     }
 
-    public void setEmailUser(String emailUser) {
-        this.emailUser = emailUser;
+    public void setEmailCli(String emailCli) {
+        this.emailCli = emailCli;
     }
 
     public String getUserCli() {
@@ -83,51 +83,51 @@ public class User {
         this.userCli = userCli;
     }
 
-    public String getSenhaUser() {
-        return senhaUser;
+    public String getSenhaCli() {
+        return senhaCli;
     }
 
-    public void setSenhaUser(String senhaUser) {
-        this.senhaUser = senhaUser;
+    public void setSenhaCli(String senhaCli) {
+        this.senhaCli = senhaCli;
     }
 
-    public String getTelUser() {
-        return telUser;
+    public String getTelefoneCli() {
+        return telefoneCli;
     }
 
-    public void setTelUser(String telUser) {
-        this.telUser = telUser;
+    public void setTelefoneCli(String telefoneCli) {
+        this.telefoneCli = telefoneCli;
     }
 
-    public String getCepUser() {
-        return cepUser;
+    public String getCepCli() {
+        return cepCli;
     }
 
-    public void setCepUser(String cepUser) {
-        this.cepUser = cepUser;
+    public void setCepCli(String cepCli) {
+        this.cepCli = cepCli;
     }
 
-    public String getLogUser() {
-        return logUser;
+    public String getLogradouroCli() {
+        return logradouroCli;
     }
 
-    public void setLogUser(String logUser) {
-        this.logUser = logUser;
+    public void setLogradouroCli(String logradouroCli) {
+        this.logradouroCli = logradouroCli;
     }
 
-    public String getNumUser() {
-        return numUser;
+    public String getNumCli() {
+        return numCli;
     }
 
-    public void setNumUser(String numUser) {
-        this.numUser = numUser;
+    public void setNumCli(String numCli) {
+        this.numCli = numCli;
     }
 
-    public String getComplementoUser() {
-        return complementoUser;
+    public String getComplementoCli() {
+        return complementoCli;
     }
 
-    public void setComplementoUser(String complementoUser) {
-        this.complementoUser = complementoUser;
+    public void setComplementoCli(String complementoCli) {
+        this.complementoCli = complementoCli;
     }
 }

@@ -5,13 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -21,28 +19,12 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.tomoesushi.apiCep.Mascara;
 import com.example.tomoesushi.apiCep.RESTService;
-import com.example.tomoesushi.apinterface.Users;
 import com.example.tomoesushi.database.DBHelper;
 import com.example.tomoesushi.models.CEP;
 import com.example.tomoesushi.models.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.net.URLEncoder;
-import java.security.cert.CertificateException;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -205,15 +187,15 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         String compPass = comE.getText().toString();
 
         User user = new User();
-        user.nomeUser = nomePass;
-        user.emailUser = emailPass;
+        user.nomeCli = nomePass;
+        user.emailCli = emailPass;
         user.userCli = userPass;
-        user.senhaUser = senhaPass;
-        user.telUser = telPass;
-        user.cepUser = cepPass;
-        user.logUser = logPass;
-        user.numUser = numPass;
-        user.complementoUser = compPass;
+        user.senhaCli = senhaPass;
+        user.telefoneCli = telPass;
+        user.cepCli = cepPass;
+        user.logradouroCli = logPass;
+        user.numCli = numPass;
+        user.complementoCli = compPass;
 
         CadastraUser(user);
     }

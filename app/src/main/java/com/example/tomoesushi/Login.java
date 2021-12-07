@@ -9,9 +9,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.tomoesushi.database.DBHelper;
 import com.example.tomoesushi.http.HttpUser;
 import com.example.tomoesushi.models.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -20,6 +27,8 @@ public class Login extends AppCompatActivity {
 
     DBHelper db = new DBHelper(this);
     EditText txtCampoUsuario, txtCampoSenha;
+    private final ObjectMapper mapper = new ObjectMapper();
+    RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,34 +50,41 @@ public class Login extends AppCompatActivity {
     }
 
     public void Logar(View view) {
+        String uri = "http://20.114.208.185/api/cliente/login";
+        User us = new User();
+        us.userCli = txtCampoUsuario.getText().toString();
+        us.senhaCli = txtCampoSenha.getText().toString();
 
-        /*User us = new User();
-       /* us.setUserCli(txtCampoUsuario.getText().toString());
-        us.setSenhaUser(txtCampoSenha.getText().toString());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, uri,
+                response -> {
+                    try {
+                        User responseUser = mapper.readValue(response, User.class);
+                        if(responseUser.userCli != null) {
+                            Intent intentEntrar = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intentEntrar);
+                        } else {
+                            Toast.makeText(Login.this, "Usuário ou senha inválidos", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (JsonProcessingException e) {
+                        Toast.makeText(Login.this, "Ocorreu um erro ao efetuar o Login, tente novamente", Toast.LENGTH_LONG).show();
+                    }
+                },
+                error -> Toast.makeText(Login.this, "Ocorreu um erro ao efetuar o Login, tente novamente", Toast.LENGTH_LONG).show()) {
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return mapper.writeValueAsBytes(us);
+                } catch (JsonProcessingException e) {
+                    throw new AuthFailureError("Ocorreu um erro ao deserializar o objeto");
+                }
+            }
 
-        us.setUserCli("aurora");
-        us.setSenhaUser("a");
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
-        StrictMode.setThreadPolicy(policy);
-
-        User usuarioLogado = Conexao.logarUsuario(us);
-
-        if(usuarioLogado.getIdUser() == 0 && usuarioLogado.getUserCli() == null) {
-            Toast.makeText(this, "Usuario inválido", Toast.LENGTH_SHORT).show();
-        } else {*/
-        Intent intentEntrar = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intentEntrar);
-        //}
-
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+        };
+        requestQueue = Volley.newRequestQueue(Login.this);
+        requestQueue.add(stringRequest);
     }
-
-    //--------------------------------------------------------------------------
-    /*static User logarUsuario(User usuario) {
-        HttpUser client = new HttpUser();
-        String responseBody = client.doRequest("http://20.114.208.185/api/cliente/login", "POST", new HashMap<>(), usuario);
-//        Log.d(LOG_TAG, responseBody);
-        return new Gson().fromJson(responseBody, User.class);
-    }*/
 }

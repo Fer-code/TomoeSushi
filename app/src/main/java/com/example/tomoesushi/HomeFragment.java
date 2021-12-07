@@ -129,8 +129,8 @@ public class HomeFragment extends Fragment {
             }
             i++;
             String itens = String.valueOf(listaProduto.size());
-            Toast.makeText(getContext(), itens,
-                    Toast.LENGTH_SHORT).show();
+           /* Toast.makeText(getContext(), itens,
+                    Toast.LENGTH_SHORT).show();*/
             for (Produto p :listaProduto
                  ) {
 

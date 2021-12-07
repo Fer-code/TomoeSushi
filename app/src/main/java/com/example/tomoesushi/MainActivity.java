@@ -90,6 +90,9 @@ public class MainActivity extends AppCompatActivity{
                             fragSelecionada= new PesquisaFragment();
                             break;
 
+                        case R.id.nav_reservar:
+                            fragSelecionada= new ReservaFragment();
+                            break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             fragSelecionada).commit();

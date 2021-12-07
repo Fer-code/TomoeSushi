@@ -16,4 +16,9 @@
         android:icon="@drawable/ic_baseline_search_24"
         android:title="pesquisar"/>
 
+    <item
+        android:id="@+id/nav_reservar"
+        android:icon="@drawable/ic_baseline_today_24"
+        android:title="@string/res"/>
+
 </menu>

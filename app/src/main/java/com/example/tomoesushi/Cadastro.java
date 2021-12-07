@@ -133,8 +133,6 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         salvar = (Button) contactPopupView.findViewById(R.id.save);
         btnCEP = (Button) contactPopupView.findViewById(R.id.btnCEP);
 
-
-
         dialogBuilder.setView(contactPopupView);
         dialog = dialogBuilder.create();
         dialog.show();

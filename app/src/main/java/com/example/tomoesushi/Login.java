@@ -2,7 +2,9 @@ package com.example.tomoesushi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -25,6 +27,9 @@ import java.util.HashMap;
 
 public class Login extends AppCompatActivity {
 
+    public static final String USER_KEY = "user_key";
+    public static final String SHARED_PREFS = "shared_prefs";
+    SharedPreferences sharedpreferences;
     DBHelper db = new DBHelper(this);
     EditText txtCampoUsuario, txtCampoSenha;
     private final ObjectMapper mapper = new ObjectMapper();
@@ -39,17 +44,15 @@ public class Login extends AppCompatActivity {
         txtCampoUsuario = findViewById(R.id.editTextTextPersonName2);
         txtCampoSenha = findViewById(R.id.ETsenha);
     }
-    /*public void Enter(View v){
-        Intent in = new Intent(Login.this, MainActivity.class);
-        startActivity(in);
-
-    }*/
     public void Cadastrar(View c){
         Intent cad = new Intent(this, Cadastro.class);
         startActivity(cad);
     }
 
     public void Logar(View view) {
+
+        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+
         String uri = "http://20.114.208.185/api/cliente/login";
         User us = new User();
         us.userCli = txtCampoUsuario.getText().toString();
@@ -60,6 +63,13 @@ public class Login extends AppCompatActivity {
                     try {
                         User responseUser = mapper.readValue(response, User.class);
                         if(responseUser.userCli != null) {
+                            String u = String.valueOf(responseUser.userCli);
+                            SharedPreferences.Editor editor = sharedpreferences.edit();
+
+                            editor.putString(USER_KEY, u);
+
+                            editor.apply();
+
                             Intent intentEntrar = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intentEntrar);
                         } else {

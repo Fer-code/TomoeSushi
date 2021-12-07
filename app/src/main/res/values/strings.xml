@@ -11,6 +11,7 @@
     <string name="save">Salvar</string>
 
     <string name="item">Itens</string>
+    <string name="res">Reserva</string>
     <string name="pag">Pagamento</string>
     <string name="confirmado">Confirmado</string>
     <string name="conf">Confirmar</string>
@@ -77,5 +78,6 @@
     <string name="pular">Pular</string>
     <string name="user">Nome de usuário</string>
 
-
+    <string name="markDate"><b>Selecione o dia desejado</b></string>
+    <string name="escolha_um_hor_rio">Escolha um horário</string>
 </resources>

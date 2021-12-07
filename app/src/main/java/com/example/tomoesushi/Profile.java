@@ -2,9 +2,12 @@ package com.example.tomoesushi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -19,6 +22,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Profile extends AppCompatActivity {
+
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String USER_KEY = "user_key";
+    SharedPreferences sharedpreferences;
 
     private RequestQueue mQueue;
     TextView result, nome, email, tel, e;
@@ -36,8 +43,14 @@ public class Profile extends AppCompatActivity {
         email = findViewById(R.id.TelAlterarTXT);
         tel = findViewById(R.id.EmailAlterarTXT);
 
+        //---------------PEGA USER------------------------------------------------------------------
+        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+
+        String codU = sharedpreferences.getString(USER_KEY, null);
+
+        //------------------------------------------------------------------------------------------
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://20.114.208.185/api/cliente/user/gabi";
+        String url = "http://20.114.208.185/api/cliente/user/"+codU;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {

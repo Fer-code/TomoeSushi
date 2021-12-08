@@ -83,9 +83,9 @@ public class MyLocation extends AppCompatActivity implements FetchAddressTask.On
         int la = 0;
         
         if (teste.contains(lastAdress)) {
-            Toast.makeText(this, "IGUAL", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "IGUAL", Toast.LENGTH_LONG).show();
         } else{
-            Toast.makeText(this, "CRONOOOO", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "l", Toast.LENGTH_LONG).show();
         }
         //canCallLoad();
 

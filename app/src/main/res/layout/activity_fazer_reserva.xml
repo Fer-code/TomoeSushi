@@ -8,6 +8,33 @@
     android:gravity="center"
     tools:context=".FazerReserva">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/quantAssentos"
+            android:textColorHint="#640202"
+            android:textSize="20sp"/>
+
+
+        <EditText
+            android:id="@+id/numPs"
+            android:layout_width="50dp"
+            android:ems="10"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:inputType="number"
+            />
+    </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,15 +47,13 @@
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:background="#fff">
         
         <CalendarView
             android:id="@+id/calendar"
             android:layout_width="wrap_content"
             android:layout_height="320dp">
-
-
 
         </CalendarView>
     </LinearLayout>
@@ -40,5 +65,15 @@
         android:layout_marginTop="20dp"
         android:hint="@string/conf"
         android:textColorHint="@color/white"/>
+
+    <Button
+        android:id="@+id/hor"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/conf"
+        android:onClick="H"
+        android:textColorHint="@color/white"/>
+
 
 </LinearLayout>

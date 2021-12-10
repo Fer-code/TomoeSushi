@@ -80,4 +80,6 @@
 
     <string name="markDate"><b>Selecione o dia desejado</b></string>
     <string name="escolha_um_hor_rio">Escolha um horário</string>
+    <string name="reserva">Reserva</string>
+    <string name="quantAssentos">Quantidade de assentos:</string>
 </resources>

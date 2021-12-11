@@ -5,17 +5,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Reserva {
-    @JsonProperty("idReserva")
+    @JsonProperty("IdReserva")
     public int idReserva;
-    @JsonProperty("numPessoas")
+    @JsonProperty("NumPessoas")
     public int numPessoas;
-    @JsonProperty("dataHoraReserva")
+    @JsonProperty("DataHoraReserva")
     public String dataHoraReserva;
-    @JsonProperty("statusReserva")
+    @JsonProperty("StatusReserva")
     public String statusReserva;
-    @JsonProperty("idCli")
+    @JsonProperty("IdCli")
     public int idCli;
-    @JsonProperty("idMesa")
+    @JsonProperty("IdMesa")
     public int idMesa;
 
 

@@ -93,7 +93,7 @@ public class FazerReserva extends AppCompatActivity {
                                 }
                             }
                         }, 12, 0, true);
-                TotalH = Hora+":"+Minuto+":00";
+                TotalH = "23"+":"+"59"+":00";
                 timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 timePickerDialog.updateTime(Hora, Minuto);
                 timePickerDialog.show();

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/iniciotransporte"
-    tools:context=".Cadastro">
+    tools:context=".activities.CadastroActivity">
 
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="5dp"
@@ -22,90 +22,91 @@
             android:orientation="vertical">
 
             <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-
-
-            <com.example.tomoesushi.CustomView
-                android:id="@+id/edtName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:layout_marginTop="10dp"
-                android:textColorHint="@color/black"
-                android:hint="@string/nome"/>
-
-                <com.example.tomoesushi.CustomView
-                    android:id="@+id/edtUser"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:layout_marginTop="10dp"
-                    android:textColorHint="@color/black"
-                    android:hint="@string/user"/>
-
-                <com.example.tomoesushi.CustomView
-                android:id="@+id/edtEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:textColorHint="@color/black"
-                android:layout_marginTop="10dp"
-                android:hint="@string/email"/>
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp">
 
 
-            <com.example.tomoesushi.CustomView
-                android:id="@+id/edtTel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:layout_marginTop="10dp"
-                android:textColorHint="@color/black"
-                android:hint="@string/tel"
-                android:inputType="phone" />
+                    <com.example.tomoesushi.views.CustomView
+                        android:id="@+id/edtName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:hint="@string/nome"
+                        android:inputType="textPersonName"
+                        android:textColorHint="@color/black" />
 
-            <com.example.tomoesushi.CustomView
-                android:id="@+id/edtSenha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:layout_marginTop="10dp"
-                android:hint="@string/senha"
-                android:textColorHint="@color/black"
-                android:inputType="textPassword" />
+                    <com.example.tomoesushi.views.CustomView
+                        android:id="@+id/edtUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:hint="@string/user"
+                        android:inputType="textPersonName"
+                        android:textColorHint="@color/black" />
 
-            <com.example.tomoesushi.CustomView
-                android:id="@+id/edtConfSenha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:layout_marginTop="10dp"
-                android:hint="@string/confSenha"
-                android:textColorHint="@color/black"
-                android:inputType="textPassword" />
+                    <com.example.tomoesushi.views.CustomView
+                        android:id="@+id/edtEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:textColorHint="@color/black" />
 
 
-            </LinearLayout>
-        </ScrollView>
+                    <com.example.tomoesushi.views.CustomView
+                        android:id="@+id/edtTel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:hint="@string/tel"
+                        android:inputType="phone"
+                        android:textColorHint="@color/black" />
+
+                    <com.example.tomoesushi.views.CustomView
+                        android:id="@+id/edtSenha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:hint="@string/senha"
+                        android:inputType="textPassword"
+                        android:textColorHint="@color/black" />
+
+                    <com.example.tomoesushi.views.CustomView
+                        android:id="@+id/edtConfSenha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:hint="@string/confSenha"
+                        android:inputType="textPassword"
+                        android:textColorHint="@color/black" />
+
+
+                </LinearLayout>
+            </ScrollView>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
     <Button
-        android:id="@+id/button2"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
+        android:onClick="cadastrarUsuario"
         android:text="@string/conf" />
 
 </LinearLayout>

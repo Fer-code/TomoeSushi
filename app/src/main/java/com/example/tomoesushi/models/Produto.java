@@ -1,24 +1,24 @@
 package com.example.tomoesushi.models;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Produto {
-    @SerializedName("idProd")
+    @JsonProperty("IdProd")
     public int midProd;
-    @SerializedName("nomeProd")
+    @JsonProperty("NomeProd")
     public String mnomeProd;
-    @SerializedName("descProd")
+    @JsonProperty("DescProd")
     public String mdescProd;
-    @SerializedName("precoProd")
+    @JsonProperty("PrecoProd")
     public double mprecoProd;
-    @SerializedName("categoriaProd")
+    @JsonProperty("CategoriaProd")
     public String mcatProd;
-    @SerializedName("statusProd")
+    @JsonProperty("StatusProd")
     public String mstatusProd;
 
-    public Produto(){
-
-    }
+    public Produto() {}
 
     public Produto(String nomeProd, String descProd, double precoProd, String catProd, String statusProd) {
         mnomeProd = nomeProd;
@@ -37,51 +37,8 @@ public class Produto {
         mstatusProd = statusProd;
     }
 
-    public int getIdProd() {
-        return midProd;
-    }
-
-    public void setIdProd(int idProd) {
-        this.midProd = idProd;
-    }
-
-    public String getNomeProd() {
-        return mnomeProd;
-    }
-
-    public void setNomeProd(String nomeProd) {
-        this.mnomeProd = nomeProd;
-    }
-
-    public String getDescProd() {
-        return mdescProd;
-    }
-
-    public void setDescProd(String descProd) {
-        this.mdescProd = descProd;
-    }
-
-    public double getPrecoProd() {
-        return mprecoProd;
-    }
-
-    public void setPrecoProd(double precoProd) {
-        this.mprecoProd = precoProd;
-    }
-
-    public String getCatProd() {
-        return mcatProd;
-    }
-
-    public void setCatProd(String catProd) {
-        this.mcatProd = catProd;
-    }
-
-    public String getStatusProd() {
-        return mstatusProd;
-    }
-
-    public void setStatusProd(String statusProd) {
-        this.mstatusProd = statusProd;
+    @Override
+    public String toString() {
+        return "Produto: " + mnomeProd;
     }
 }

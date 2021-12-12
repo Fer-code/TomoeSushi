@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Profile">
+    tools:context=".activities.Profile">
 
     <androidx.cardview.widget.CardView
         android:layout_margin="20dp"
@@ -15,7 +15,6 @@
         android:elevation="400dp">
 
         <ImageView
-            android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:srcCompat="@drawable/sushibranco"

@@ -25,8 +25,7 @@
         android:layout_marginTop="200dp"
         android:orientation="vertical">
 
-    <View
-        android:id="@+id/divider"
+        <View
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:background="?android:attr/listDivider" />
@@ -43,7 +42,6 @@
         android:layout_marginTop="10dp">
 
         <ImageView
-            android:id="@+id/d"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="5dp"
@@ -51,50 +49,21 @@
             app:srcCompat="@drawable/ic_baseline_place_24"
             tools:ignore="VectorDrawableCompat" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="70dp"
-            android:hint="@string/localizacao"
-            android:textSize="20sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/black"
+                android:hint="@string/localizacao"
+                android:textSize="20sp" />
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-        <ScrollView
+        <ListView
+            android:id="@+id/productList"
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/text_view_result"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:padding="10dp"
-                    android:background="@color/teal_200"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-
-                <View
-                    android:id="@+id/f"
-                    android:layout_width="match_parent"
-                    android:layout_height="4dp"
-                    android:background="?android:attr/listDivider" />
-
-
-            </LinearLayout>
-
-
-        </ScrollView>
-
+            android:layout_height="wrap_content" />
 
 
     </LinearLayout>

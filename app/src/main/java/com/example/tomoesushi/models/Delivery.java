@@ -9,10 +9,9 @@ public class Delivery {
     public String cep;
     public String num;
 
-    public Delivery(){
+    public Delivery() {
 
     }
-
 
 
     public int getIdDel() {

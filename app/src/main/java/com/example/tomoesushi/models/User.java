@@ -5,28 +5,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
-    @JsonProperty("idCli")
+    @JsonProperty("IdCli")
     public int idCli;
-    @JsonProperty("nomeCli")
+    @JsonProperty("NomeCli")
     public String nomeCli;
-    @JsonProperty("emailCli")
+    @JsonProperty("EmailCli")
     public String emailCli;
-    @JsonProperty("userCli")
+    @JsonProperty("UserCli")
     public String userCli;
-    @JsonProperty("senhaCli")
+    @JsonProperty("SenhaCli")
     public String senhaCli;
-    @JsonProperty("telefoneCli")
+    @JsonProperty("TelefoneCli")
     public String telefoneCli;
-    @JsonProperty("cepCli")
+    @JsonProperty("CepCli")
     public String cepCli;
     @JsonProperty("LogradouroCli")
     public String logradouroCli;
-    @JsonProperty("numCli")
+    @JsonProperty("NumCli")
     public String numCli;
-    @JsonProperty("complementoCli")
+    @JsonProperty("ComplementoCli")
     public String complementoCli;
 
-    public User(){}
+    public User() {
+    }
 
     public User(int idCli, String nomeCli, String emailCli, String userCli, String senhaCli, String telefoneCli, String cepCli, String logradouroCli, String numCli, String complementoCli) {
         this.idCli = idCli;

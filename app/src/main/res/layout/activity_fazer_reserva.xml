@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_height="wrap_content"
     android:gravity="center"
-    tools:context=".FazerReserva">
+    tools:context=".activities.CadastroReservaActivity">
 
 
     <LinearLayout
@@ -59,21 +59,21 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/confReserva"
-        android:layout_width="150dp"
+        android:id="@+id/selecionarHorario"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:hint="@string/conf"
-        android:textColorHint="@color/white"/>
+        android:hint="@string/selecionarHorario"
+        android:textColorHint="@color/white" />
 
     <Button
-        android:id="@+id/hor"
-        android:layout_width="150dp"
+        android:id="@+id/confirmarReserva"
+        android:layout_width="171dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:hint="@string/conf"
         android:onClick="H"
-        android:textColorHint="@color/white"/>
+        android:textColorHint="@color/white" />
 
 
 </LinearLayout>

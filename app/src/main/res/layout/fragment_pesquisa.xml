@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.tomoesushi.CustomView
-        android:id="@+id/editTextTextPesquisada"
+    <com.example.tomoesushi.views.CustomView
         android:layout_width="350dp"
         android:layout_height="45dp"
         android:layout_gravity="center"
@@ -28,7 +27,6 @@
             android:orientation="vertical">
 
             <ListView
-                android:id="@+id/list_result7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>

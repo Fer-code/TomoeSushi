@@ -36,7 +36,8 @@ public class Reserva {
         this.idMesa = idMesa;
     }
 
-    public Reserva() {   }
+    public Reserva() {
+    }
 
     public int getIdReserva() {
         return idReserva;

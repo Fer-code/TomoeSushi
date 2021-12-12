@@ -57,7 +57,6 @@
         android:hint="@string/infoEnd"/>
 
     <TextView
-        android:id="@+id/enterContact"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

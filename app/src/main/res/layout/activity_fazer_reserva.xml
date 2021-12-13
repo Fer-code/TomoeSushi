@@ -58,6 +58,13 @@
         </CalendarView>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/testHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColorHint="#640202"
+        android:textSize="20sp"/>
+
     <Button
         android:id="@+id/selecionarHorario"
         android:layout_width="wrap_content"
@@ -72,7 +79,6 @@
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:hint="@string/conf"
-        android:onClick="H"
         android:textColorHint="@color/white" />
 
 

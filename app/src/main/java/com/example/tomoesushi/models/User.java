@@ -6,17 +6,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
     @JsonProperty("IdCli")
-    public int idCli;
+    public int IdCli;
     @JsonProperty("NomeCli")
-    public String nomeCli;
+    public String NomeCli;
     @JsonProperty("EmailCli")
-    public String emailCli;
+    public String EmailCli;
     @JsonProperty("UserCli")
     public String userCli;
     @JsonProperty("SenhaCli")
     public String senhaCli;
     @JsonProperty("TelefoneCli")
-    public String telefoneCli;
+    public String TelefoneCli;
     @JsonProperty("CepCli")
     public String cepCli;
     @JsonProperty("LogradouroCli")
@@ -30,12 +30,12 @@ public class User {
     }
 
     public User(int idCli, String nomeCli, String emailCli, String userCli, String senhaCli, String telefoneCli, String cepCli, String logradouroCli, String numCli, String complementoCli) {
-        this.idCli = idCli;
-        this.nomeCli = nomeCli;
-        this.emailCli = emailCli;
+        this.IdCli = idCli;
+        this.NomeCli = nomeCli;
+        this.EmailCli = emailCli;
         this.userCli = userCli;
         this.senhaCli = senhaCli;
-        this.telefoneCli = telefoneCli;
+        this.TelefoneCli = telefoneCli;
         this.cepCli = cepCli;
         this.logradouroCli = logradouroCli;
         this.numCli = numCli;
@@ -43,11 +43,11 @@ public class User {
     }
 
     public User(String nomeCli, String emailCli, String userCli, String senhaCli, String telefoneCli, String cepCli, String logradouroCli, String numCli, String complementoCli) {
-        this.nomeCli = nomeCli;
-        this.emailCli = emailCli;
+        this.NomeCli = nomeCli;
+        this.EmailCli = emailCli;
         this.userCli = userCli;
         this.senhaCli = senhaCli;
-        this.telefoneCli = telefoneCli;
+        this.TelefoneCli = telefoneCli;
         this.cepCli = cepCli;
         this.logradouroCli = logradouroCli;
         this.numCli = numCli;
@@ -55,27 +55,27 @@ public class User {
     }
 
     public int getIdUser() {
-        return idCli;
+        return IdCli;
     }
 
     public void setIdUser(int idUser) {
-        this.idCli = idUser;
+        this.IdCli = idUser;
     }
 
     public String getNomeCli() {
-        return nomeCli;
+        return NomeCli;
     }
 
     public void setNomeCli(String nomeCli) {
-        this.nomeCli = nomeCli;
+        this.NomeCli = nomeCli;
     }
 
     public String getEmailCli() {
-        return emailCli;
+        return EmailCli;
     }
 
     public void setEmailCli(String emailCli) {
-        this.emailCli = emailCli;
+        this.EmailCli = emailCli;
     }
 
     public String getUserCli() {
@@ -95,11 +95,11 @@ public class User {
     }
 
     public String getTelefoneCli() {
-        return telefoneCli;
+        return TelefoneCli;
     }
 
     public void setTelefoneCli(String telefoneCli) {
-        this.telefoneCli = telefoneCli;
+        this.TelefoneCli = telefoneCli;
     }
 
     public String getCepCli() {

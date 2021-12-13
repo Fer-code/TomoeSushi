@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             if (response.userCli != null) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(USER_KEY, response.userCli);
-                editor.putString(USER_ID_KEY, String.valueOf(response.idCli));
+                editor.putString(USER_ID_KEY, String.valueOf(response.IdCli));
                 editor.apply();
                 Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(mainIntent);

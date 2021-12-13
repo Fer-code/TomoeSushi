@@ -39,7 +39,7 @@ public class UserService {
 
     public void cadastrar(User user, IResponse<User> onResponse, IError onError) {
         RequestService requestService = new RequestService(Request.Method.POST, this.apiUrl, mapper, user, response -> {
-            user.idCli = Integer.parseInt(response);
+            user.IdCli = Integer.parseInt(response);
             onResponse.onResponse(user);
         }, onError::onError);
 

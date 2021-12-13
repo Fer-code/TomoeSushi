@@ -96,11 +96,11 @@ public class CadastroActivity extends AppCompatActivity {
 
     private void pular(View view) {
         User user = new User();
-        user.nomeCli = editTextNome.getText().toString();
-        user.emailCli = editTextEmail.getText().toString();
+        user.NomeCli = editTextNome.getText().toString();
+        user.EmailCli = editTextEmail.getText().toString();
         user.userCli = editTextUsuario.getText().toString();
         user.senhaCli = editTextSenha.getText().toString();
-        user.telefoneCli = editTextTelefone.getText().toString();
+        user.TelefoneCli = editTextTelefone.getText().toString();
 
         user.cepCli = "";
         user.logradouroCli = "";
@@ -118,11 +118,11 @@ public class CadastroActivity extends AppCompatActivity {
             editTextCep.setError("O CEP deve possuir 8 dígitos");
         } else {
             User user = new User();
-            user.nomeCli = editTextNome.getText().toString();
-            user.emailCli = editTextEmail.getText().toString();
+            user.NomeCli = editTextNome.getText().toString();
+            user.EmailCli = editTextEmail.getText().toString();
             user.userCli = editTextUsuario.getText().toString();
             user.senhaCli = editTextSenha.getText().toString();
-            user.telefoneCli = editTextTelefone.getText().toString();
+            user.TelefoneCli = editTextTelefone.getText().toString();
             user.cepCli = cep;
             user.logradouroCli = editTextLogradouro.getText().toString();
             user.complementoCli = editTextComplemento.getText().toString();

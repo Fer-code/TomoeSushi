@@ -22,4 +22,9 @@
         android:textSize="20sp"
         android:id="@+id/mais"/>
 
+    <ListView
+        android:id="@+id/reservaList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

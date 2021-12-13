@@ -53,7 +53,7 @@ public class CadastroActivity extends AppCompatActivity {
 
 
     public void cadastrarUsuario(View view) {
-        createNewContactDialog();
+
         if (editTextNome.getText().toString().isEmpty() || editTextUsuario.getText().toString().isEmpty()
                 || editTextEmail.getText().toString().isEmpty() || editTextSenha.getText().toString().isEmpty()
                 || editTextTelefone.getText().toString().isEmpty() || editTextConfirmacaoSenha.getText().toString().isEmpty()) {

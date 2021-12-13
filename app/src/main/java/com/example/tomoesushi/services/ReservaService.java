@@ -49,4 +49,14 @@ public class ReservaService {
 
         requestQueue.add(requestService);
     }
+
+    public void deletarReserva(int idReserva, IResponse<Boolean> onResponse, IError onError){
+        String url = this.apiUrl+"/"+idReserva;
+        RequestService requestService = new RequestService(Request.Method.DELETE, url, mapper, null, response -> {
+            //reserva.idReserva = Integer.parseInt(response);
+            onResponse.onResponse(true);
+        }, onError::onError);
+
+        requestQueue.add(requestService);
+    }
 }

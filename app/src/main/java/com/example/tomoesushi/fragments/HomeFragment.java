@@ -1,15 +1,21 @@
 package com.example.tomoesushi.fragments;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +29,8 @@ import com.example.tomoesushi.activities.MyLocation;
 import com.example.tomoesushi.adapters.ProdutoAdapter;
 import com.example.tomoesushi.models.Produto;
 import com.example.tomoesushi.services.ProdutoService;
+import com.example.tomoesushi.utils.Mascara;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.synnapps.carouselview.CarouselView;
 
 import java.util.LinkedList;
@@ -63,6 +71,16 @@ public class HomeFragment extends Fragment {
 
         atualizarProdutos();
 
+        FloatingActionButton fab = view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("tel: 11 983676652");
+                Intent it = new Intent(Intent.ACTION_DIAL, uri);
+                startActivity(it);
+            }
+        });
+
         return view;
     }
 
@@ -86,6 +104,27 @@ public class HomeFragment extends Fragment {
     }
 
     private void selecionarProduto(AdapterView<?> parent, View view,int position, long id) {
-        System.out.println("Selecionado o produto: " + listProduto.get(position).mnomeProd);
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+        final View contactPopupView = getLayoutInflater().inflate(R.layout.info_prod_selected, null);
+
+        String nomeP = listProduto.get(position).mnomeProd;
+        String descP = listProduto.get(position).mdescProd;
+        String precoP = String.valueOf(listProduto.get(position).mprecoProd);
+
+        TextView nomeTXT = (TextView)getView().findViewById(R.id.nomeProdutoD);
+        TextView descTXT = getActivity().findViewById(R.id.descricaoProdutoD);
+        TextView precoTXT = getActivity().findViewById(R.id.precoProdutoD);
+
+        nomeTXT.setText(String.valueOf(nomeP));
+        descTXT.setText(descP);
+        precoTXT.setText(precoP);
+
+        dialogBuilder.setView(contactPopupView);
+        Dialog dialog = dialogBuilder.create();
+        dialog.show();
+        //System.out.println("Selecionado o produto: " + listProduto.get(position).mnomeProd);
     }
+
+
+
 }

@@ -33,6 +33,8 @@ public class ReservaFragment extends Fragment {
     private ArrayAdapter<Reserva> arrayAdapterReserva;
     private List<Reserva> listReserva;
 
+    int idCli = 1;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         reservaService = new ReservaService(getActivity());
@@ -45,6 +47,7 @@ public class ReservaFragment extends Fragment {
         listViewReservas.setAdapter(arrayAdapterReserva);
 
         btnFazerReserva.setOnClickListener(this::criarReserva);
+        ReservaAdapter.textViewApagar.setOnClickListener(this::deletarReservas);
 
         atualizarReservas();
 
@@ -65,4 +68,18 @@ public class ReservaFragment extends Fragment {
             Toast.makeText(getActivity(), "Ocorreu um erro durante a listagem de produtos", Toast.LENGTH_SHORT).show();
         });
     }
+
+    private void deletarReservas(View view){
+        Reserva reserva = new Reserva();
+        reserva.idCli = idCli;
+
+        reservaService.deletarReserva(idCli, response -> {
+            Toast.makeText(getActivity(), "Reserva apagada com sucesso", Toast.LENGTH_LONG).show();
+
+            }, error -> {
+            Toast.makeText(getActivity(), "Ocorreu um erro ao apagar a reserva", Toast.LENGTH_LONG).show();
+        });
+
+    }
+
 }

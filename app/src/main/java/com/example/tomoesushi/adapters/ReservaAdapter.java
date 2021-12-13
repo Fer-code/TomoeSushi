@@ -1,10 +1,12 @@
 package com.example.tomoesushi.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,7 @@ import java.util.List;
 
 public class ReservaAdapter extends ArrayAdapter<Reserva> {
 
+    public static TextView textViewApagar;
     private Activity activity;
 
     public ReservaAdapter(@NonNull Context context, int resource, @NonNull List<Reserva> objects, Activity activity) {
@@ -31,6 +34,8 @@ public class ReservaAdapter extends ArrayAdapter<Reserva> {
 
         TextView textViewDH = (TextView) view.findViewById(R.id.dataHoraReserva);
         TextView textViewStatus = (TextView) view.findViewById(R.id.statusReserva);
+
+        textViewApagar = (TextView) view.findViewById(R.id.apagar);
 
         textViewDH.setText(reserva.dataHoraReserva);
         textViewStatus.setText(reserva.statusReserva);

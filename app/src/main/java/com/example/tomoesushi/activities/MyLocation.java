@@ -72,38 +72,8 @@ public class MyLocation extends AppCompatActivity implements FetchAddressTask.On
     protected void onStart() {
         super.onStart();
         vaiofvr();
-        load();
 
-        String result = txtResultado.getText().toString();
-        String load = txtLoad.getText().toString();
-
-        int la = 0;
-
-        if (teste.contains(lastAdress)) {
-            //Toast.makeText(this, "IGUAL", Toast.LENGTH_LONG).show();
-        } else {
-            // mToast.makeText(this, "l", Toast.LENGTH_LONG).show();
-        }
-        //canCallLoad();
-
-       /* String results = txtLoad.getText().toString();
-        for (int i = 0; i < results.length(); i++)
-        {
-            // Whatever the relevant log call is
-            Log.d("Got character: ", "" + (int) results.charAt(i));
-        }
-*/
     }
-
-   /* public void canCallLoad(){
-        if(!txtResultado.getText().toString().equals(txtLoad.getText().toString())){
-            load();
-        }
-        else{
-            //txtLoad.setVisibility(false ? View.VISIBLE : View.GONE);
-            Toast.makeText(this, "equal", Toast.LENGTH_LONG).show();
-        }
-    }*/
 
     public void vaiofvr() {
         if (!mTrackingLocation) {
@@ -177,12 +147,12 @@ public class MyLocation extends AppCompatActivity implements FetchAddressTask.On
             lastAdress = result[0];
             txtResultado.setText(getString(R.string.address_text, lastAdress));
 
-            save();
             //Esconder a progressBar
 
         }
     }
 
+    /*
     //Armazenamento interno
     public void save() {
         String text = txtResultado.getText().toString();
@@ -240,5 +210,5 @@ public class MyLocation extends AppCompatActivity implements FetchAddressTask.On
             }
         }
 
-    }
+    }*/
 }

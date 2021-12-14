@@ -27,6 +27,7 @@ import com.example.tomoesushi.R;
 import com.example.tomoesushi.activities.CadastroActivity;
 import com.example.tomoesushi.activities.MyLocation;
 import com.example.tomoesushi.adapters.ProdutoAdapter;
+import com.example.tomoesushi.dialogToFragment.DialogProducts;
 import com.example.tomoesushi.models.Produto;
 import com.example.tomoesushi.services.ProdutoService;
 import com.example.tomoesushi.utils.Mascara;
@@ -48,6 +49,11 @@ public class HomeFragment extends Fragment {
     private ListView listViewProdutos;
     private ArrayAdapter<Produto> arrayAdapterProduto;
     private List<Produto> listProduto;
+
+    TextView  descTXT, precoTXT;
+    EditText nomeTXT;
+
+    String nomeP, descP, precoP, catP;
 
     @Nullable
     @Override
@@ -103,28 +109,16 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void selecionarProduto(AdapterView<?> parent, View view,int position, long id) {
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
-        final View contactPopupView = getLayoutInflater().inflate(R.layout.info_prod_selected, null);
+    public void selecionarProduto(AdapterView<?> parent, View view,int position, long id) {
+        nomeP = listProduto.get(position).mnomeProd;
+        descP = listProduto.get(position).mdescProd;
+        precoP = String.valueOf(listProduto.get(position).mprecoProd);
+        catP = listProduto.get(position).mcatProd;
 
-        String nomeP = listProduto.get(position).mnomeProd;
-        String descP = listProduto.get(position).mdescProd;
-        String precoP = String.valueOf(listProduto.get(position).mprecoProd);
+        System.out.println("Selecionado o produto: " + nomeP);
 
-        TextView nomeTXT = (TextView)getView().findViewById(R.id.nomeProdutoD);
-        TextView descTXT = getActivity().findViewById(R.id.descricaoProdutoD);
-        TextView precoTXT = getActivity().findViewById(R.id.precoProdutoD);
+        DialogProducts dialog = new DialogProducts(nomeP, descP, precoP, catP);
+        dialog.show(getFragmentManager(), "DialogProducts");
 
-        nomeTXT.setText(String.valueOf(nomeP));
-        descTXT.setText(descP);
-        precoTXT.setText(precoP);
-
-        dialogBuilder.setView(contactPopupView);
-        Dialog dialog = dialogBuilder.create();
-        dialog.show();
-        //System.out.println("Selecionado o produto: " + listProduto.get(position).mnomeProd);
     }
-
-
-
 }

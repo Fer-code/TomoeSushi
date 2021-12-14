@@ -7,11 +7,6 @@
         android:title="@string/title_home"/>
 
     <item
-        android:id="@+id/nav_pedido"
-        android:icon="@drawable/ic_baseline_local_grocery_store_24"
-        android:title="@string/Pedidos"/>
-
-    <item
         android:id="@+id/nav_pesquisar"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="pesquisar"/>

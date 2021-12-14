@@ -36,6 +36,24 @@ public class MainActivity extends AppCompatActivity {
     private TextView telefone, email, localizacao, result;
 
     private RequestQueue mQueue;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        BottomNavigationView bottomNav = findViewById(R.id.nav_view);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new HomeFragment()).commit();
+
+        mQueue = Volley.newRequestQueue(this);
+    }
+
+    //----------------------------------------------------------------------------------------------
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -43,10 +61,6 @@ public class MainActivity extends AppCompatActivity {
                     Fragment fragSelecionada = null;
 
                     switch (item.getItemId()) {
-
-                        case R.id.nav_pedido:
-                            fragSelecionada = new PedidoFragment();
-                            break;
 
                         case R.id.nav_home:
                             fragSelecionada = new HomeFragment();
@@ -67,22 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        BottomNavigationView bottomNav = findViewById(R.id.nav_view);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new HomeFragment()).commit();
-
-        mQueue = Volley.newRequestQueue(this);
-    }
-
+    //----------------------------------------------------------------------------------------------
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
@@ -116,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //----------------------------------------------------------------------------------------------
     public void createNewContactDialog() {
         dialogBuilder = new AlertDialog.Builder(this);
         final View contactPopupView = getLayoutInflater().inflate(R.layout.dialog_view, null);

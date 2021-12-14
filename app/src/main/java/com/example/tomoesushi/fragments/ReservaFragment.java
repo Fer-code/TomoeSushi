@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -47,7 +48,7 @@ public class ReservaFragment extends Fragment {
         listViewReservas.setAdapter(arrayAdapterReserva);
 
         btnFazerReserva.setOnClickListener(this::criarReserva);
-        ReservaAdapter.textViewApagar.setOnClickListener(this::deletarReservas);
+        //ReservaAdapter.textViewApagar.setOnClickListener(this::deletarReservas);
 
         atualizarReservas();
 
@@ -67,6 +68,10 @@ public class ReservaFragment extends Fragment {
         }, error -> {
             Toast.makeText(getActivity(), "Ocorreu um erro durante a listagem de produtos", Toast.LENGTH_SHORT).show();
         });
+    }
+
+    private void selecionarProduto(AdapterView<?> parent, View view, int position, long id) {
+
     }
 
     private void deletarReservas(View view){

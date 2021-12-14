@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/a"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:textColorHint="#640202"
+        android:hint="@string/apagarReserva"
+        android:textSize="18sp"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/a"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:textColorHint="@color/white"
+        android:hint="@string/sim"/>
+
+    <Button
+        android:id="@+id/c"
+        android:layout_width="match_parent"
+        android:textColorHint="@color/white"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:hint="@string/nao"/>
+
+</LinearLayout>
+
+
+
+
+</RelativeLayout>

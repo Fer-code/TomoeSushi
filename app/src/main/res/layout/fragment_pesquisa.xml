@@ -12,11 +12,11 @@
 
         <com.example.tomoesushi.views.CustomView
             android:id="@+id/buscaItem"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginTop="10px"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:textSize="24sp"
             android:background="@drawable/fundo_busca"
             android:inputType="textPersonName"
@@ -24,7 +24,11 @@
 
         <Button
             android:id="@+id/pesquisarBtn"
-            android:layout_width="45dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10px"
+            android:hint="@string/buscar"
+            android:textColorHint="@color/white"
+            android:layout_width="wrap_content"
             android:layout_height="45dp"/>
     </LinearLayout>
 

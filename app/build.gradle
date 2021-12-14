@@ -59,4 +59,6 @@ dependencies {
 
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.23'
 
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
+
 }

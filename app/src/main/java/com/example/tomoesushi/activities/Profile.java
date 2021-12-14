@@ -1,11 +1,17 @@
 package com.example.tomoesushi.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -16,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.tomoesushi.R;
 import com.example.tomoesushi.models.User;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -26,7 +33,8 @@ public class Profile extends AppCompatActivity {
     public static final String SHARED_PREFS = "shared_prefs";
     public static final String USER_KEY = "user_key";
     SharedPreferences sharedpreferences;
-    TextView result, nome, email, tel, e;
+    TextView result, nome, email, tel, userE, end, definir;
+    ImageView profile;
     Gson gson;
     User user;
     JSONArray[] itemsArray = new JSONArray[1];
@@ -37,15 +45,22 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         gson = new Gson();
-        result = findViewById(R.id.text_view_result);
+
         nome = findViewById(R.id.NomeAlterarTXT);
         email = findViewById(R.id.TelAlterarTXT);
         tel = findViewById(R.id.EmailAlterarTXT);
+        userE = findViewById(R.id.UserAlterarTXT);
+        profile = findViewById(R.id.imagePerfil);
+        end = findViewById(R.id.EndAlterarTXT);
+        definir = findViewById(R.id.definir);
 
         //---------------PEGA USER------------------------------------------------------------------
         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
 
         String codU = sharedpreferences.getString(USER_KEY, null);
+
+        //---------------Imagem---------------------------------------------------------------------
+        definir.setOnClickListener(this::imagePicker);
 
         //------------------------------------------------------------------------------------------
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -68,10 +83,26 @@ public class Profile extends AppCompatActivity {
             }
         });
         queue.add(stringRequest);
-
-
     }
 
+
+    //---------------PARA CAMERA E GALERIA----------------------------------------------------------
+    private void imagePicker(View view) {
+        ImagePicker.with(this)
+                .crop()
+                .compress(1024)
+                .maxResultSize(1080, 1080)
+                .start();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Uri uri = data.getData();
+        profile.setImageURI(uri);
+    }
+
+    //----------------------------------------------------------------------------------------------
     public void Perfil(String response) {
 
         JSONObject jsonObject = null;
@@ -87,6 +118,14 @@ public class Profile extends AppCompatActivity {
         nome.setText(user.getNomeCli());
         email.setText(user.getEmailCli());
         tel.setText(user.getTelefoneCli());
+        userE.setText(user.getUserCli());
+
+        if( user.getLogradouroCli() != null){
+            String localCadastrado = user.getLogradouroCli() + " - " + user.getCepCli() + " - " + user.getNumCli()
+                    + " - " + user.getComplementoCli();
+
+            end.setText(localCadastrado);
+        }
     }
 }
 

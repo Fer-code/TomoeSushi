@@ -51,4 +51,10 @@
     <string name="reserva">Reserva</string>
     <string name="quantAssentos">Quantidade de assentos:</string>
     <string name="apagar">Apagar</string>
+    <string name="apagarReserva">Deseja cancelar esta reserva?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="buscar">Buscar</string>
+    <string name="dimagemp"><u>Definir imagem de perfil</u></string>
+    <string name="end">Endereço</string>
 </resources>

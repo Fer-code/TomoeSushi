@@ -98,14 +98,14 @@ public class CadastroActivity extends AppCompatActivity {
         User user = new User();
         user.NomeCli = editTextNome.getText().toString();
         user.EmailCli = editTextEmail.getText().toString();
-        user.userCli = editTextUsuario.getText().toString();
+        user.UserCli = editTextUsuario.getText().toString();
         user.senhaCli = editTextSenha.getText().toString();
         user.TelefoneCli = editTextTelefone.getText().toString();
 
-        user.cepCli = "";
-        user.logradouroCli = "";
-        user.complementoCli = "";
-        user.numCli = "";
+        user.CepCli = "";
+        user.LogradouroCli = "";
+        user.ComplementoCli = "";
+        user.NumCli = "";
 
         cadastrar(user);
     }
@@ -120,13 +120,13 @@ public class CadastroActivity extends AppCompatActivity {
             User user = new User();
             user.NomeCli = editTextNome.getText().toString();
             user.EmailCli = editTextEmail.getText().toString();
-            user.userCli = editTextUsuario.getText().toString();
+            user.UserCli = editTextUsuario.getText().toString();
             user.senhaCli = editTextSenha.getText().toString();
             user.TelefoneCli = editTextTelefone.getText().toString();
-            user.cepCli = cep;
-            user.logradouroCli = editTextLogradouro.getText().toString();
-            user.complementoCli = editTextComplemento.getText().toString();
-            user.numCli = editTextNumero.getText().toString();
+            user.CepCli = cep;
+            user.LogradouroCli = editTextLogradouro.getText().toString();
+            user.ComplementoCli = editTextComplemento.getText().toString();
+            user.NumCli = editTextNumero.getText().toString();
 
             cadastrar(user);
         }

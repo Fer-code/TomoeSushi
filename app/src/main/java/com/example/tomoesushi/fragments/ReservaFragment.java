@@ -19,6 +19,8 @@ import com.example.tomoesushi.R;
 import com.example.tomoesushi.activities.CadastroReservaActivity;
 import com.example.tomoesushi.adapters.ProdutoAdapter;
 import com.example.tomoesushi.adapters.ReservaAdapter;
+import com.example.tomoesushi.dialogToFragment.DialogDeleteReserva;
+import com.example.tomoesushi.dialogToFragment.DialogProducts;
 import com.example.tomoesushi.models.Produto;
 import com.example.tomoesushi.models.Reserva;
 import com.example.tomoesushi.services.ProdutoService;
@@ -46,6 +48,7 @@ public class ReservaFragment extends Fragment {
         arrayAdapterReserva = new ReservaAdapter(getContext(), android.R.layout.simple_list_item_1, listReserva, getActivity());
         listViewReservas = (ListView) view.findViewById(R.id.reservaList);
         listViewReservas.setAdapter(arrayAdapterReserva);
+        listViewReservas.setOnItemClickListener(this::selecionarReserva);
 
         btnFazerReserva.setOnClickListener(this::criarReserva);
         //ReservaAdapter.textViewApagar.setOnClickListener(this::deletarReservas);
@@ -70,7 +73,12 @@ public class ReservaFragment extends Fragment {
         });
     }
 
-    private void selecionarProduto(AdapterView<?> parent, View view, int position, long id) {
+    private void selecionarReserva(AdapterView<?> parent, View view, int position, long id) {
+
+       int IdR = listReserva.get(position).idReserva;
+
+        DialogDeleteReserva dialog = new DialogDeleteReserva(IdR);
+        dialog.show(getFragmentManager(), "DialogDeleteReserva");
 
     }
 

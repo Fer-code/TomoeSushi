@@ -12,19 +12,19 @@ public class User {
     @JsonProperty("EmailCli")
     public String EmailCli;
     @JsonProperty("UserCli")
-    public String userCli;
+    public String UserCli;
     @JsonProperty("SenhaCli")
     public String senhaCli;
     @JsonProperty("TelefoneCli")
     public String TelefoneCli;
     @JsonProperty("CepCli")
-    public String cepCli;
+    public String CepCli;
     @JsonProperty("LogradouroCli")
-    public String logradouroCli;
+    public String LogradouroCli;
     @JsonProperty("NumCli")
-    public String numCli;
+    public String NumCli;
     @JsonProperty("ComplementoCli")
-    public String complementoCli;
+    public String ComplementoCli;
 
     public User() {
     }
@@ -33,25 +33,25 @@ public class User {
         this.IdCli = idCli;
         this.NomeCli = nomeCli;
         this.EmailCli = emailCli;
-        this.userCli = userCli;
+        this.UserCli = userCli;
         this.senhaCli = senhaCli;
         this.TelefoneCli = telefoneCli;
-        this.cepCli = cepCli;
-        this.logradouroCli = logradouroCli;
-        this.numCli = numCli;
-        this.complementoCli = complementoCli;
+        this.CepCli = cepCli;
+        this.LogradouroCli = logradouroCli;
+        this.NumCli = numCli;
+        this.ComplementoCli = complementoCli;
     }
 
     public User(String nomeCli, String emailCli, String userCli, String senhaCli, String telefoneCli, String cepCli, String logradouroCli, String numCli, String complementoCli) {
         this.NomeCli = nomeCli;
         this.EmailCli = emailCli;
-        this.userCli = userCli;
+        this.UserCli = userCli;
         this.senhaCli = senhaCli;
         this.TelefoneCli = telefoneCli;
-        this.cepCli = cepCli;
-        this.logradouroCli = logradouroCli;
-        this.numCli = numCli;
-        this.complementoCli = complementoCli;
+        this.CepCli = cepCli;
+        this.LogradouroCli = logradouroCli;
+        this.NumCli = numCli;
+        this.ComplementoCli = complementoCli;
     }
 
     public int getIdUser() {
@@ -79,11 +79,11 @@ public class User {
     }
 
     public String getUserCli() {
-        return userCli;
+        return UserCli;
     }
 
     public void setUserCli(String userCli) {
-        this.userCli = userCli;
+        this.UserCli = userCli;
     }
 
     public String getSenhaCli() {
@@ -103,34 +103,34 @@ public class User {
     }
 
     public String getCepCli() {
-        return cepCli;
+        return CepCli;
     }
 
     public void setCepCli(String cepCli) {
-        this.cepCli = cepCli;
+        this.CepCli = cepCli;
     }
 
     public String getLogradouroCli() {
-        return logradouroCli;
+        return LogradouroCli;
     }
 
     public void setLogradouroCli(String logradouroCli) {
-        this.logradouroCli = logradouroCli;
+        this.LogradouroCli = logradouroCli;
     }
 
     public String getNumCli() {
-        return numCli;
+        return NumCli;
     }
 
     public void setNumCli(String numCli) {
-        this.numCli = numCli;
+        this.NumCli = numCli;
     }
 
     public String getComplementoCli() {
-        return complementoCli;
+        return ComplementoCli;
     }
 
     public void setComplementoCli(String complementoCli) {
-        this.complementoCli = complementoCli;
+        this.ComplementoCli = complementoCli;
     }
 }

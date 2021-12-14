@@ -42,13 +42,13 @@ public class LoginActivity extends AppCompatActivity {
 
     public void realizarLogin(View view) {
         User us = new User();
-        us.userCli = editTextUsuario.getText().toString();
+        us.UserCli = editTextUsuario.getText().toString();
         us.senhaCli = editTextSenha.getText().toString();
 
         userService.login(us, response -> {
-            if (response.userCli != null) {
+            if (response.UserCli != null) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(USER_KEY, response.userCli);
+                editor.putString(USER_KEY, response.UserCli);
                 editor.putString(USER_ID_KEY, String.valueOf(response.IdCli));
                 editor.apply();
                 Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);

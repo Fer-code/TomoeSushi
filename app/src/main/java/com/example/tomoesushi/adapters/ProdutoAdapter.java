@@ -32,10 +32,10 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
         TextView textViewCategoria = (TextView) view.findViewById(R.id.categoriaProduto);
         TextView textViewPreco = (TextView) view.findViewById(R.id.precoProduto);
 
-            textViewNome.setText(produto.mnomeProd);
-            textViewDescricao.setText(produto.mdescProd);
-            textViewCategoria.setText(produto.mcatProd);
-            textViewPreco.setText(String.valueOf(produto.mprecoProd));
+            textViewNome.setText(produto.NomeProd);
+            textViewDescricao.setText(produto.DescProd);
+            textViewCategoria.setText(produto.CategoriaProd);
+            textViewPreco.setText(String.valueOf(produto.PrecoProd));
 
         return view;
     }

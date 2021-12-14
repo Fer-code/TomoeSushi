@@ -1,8 +1,6 @@
 package com.example.tomoesushi.fragments;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -24,13 +21,11 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.tomoesushi.R;
-import com.example.tomoesushi.activities.CadastroActivity;
 import com.example.tomoesushi.activities.MyLocation;
 import com.example.tomoesushi.adapters.ProdutoAdapter;
 import com.example.tomoesushi.dialogToFragment.DialogProducts;
 import com.example.tomoesushi.models.Produto;
 import com.example.tomoesushi.services.ProdutoService;
-import com.example.tomoesushi.utils.Mascara;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.synnapps.carouselview.CarouselView;
 
@@ -110,10 +105,10 @@ public class HomeFragment extends Fragment {
     }
 
     public void selecionarProduto(AdapterView<?> parent, View view,int position, long id) {
-        nomeP = listProduto.get(position).mnomeProd;
-        descP = listProduto.get(position).mdescProd;
-        precoP = String.valueOf(listProduto.get(position).mprecoProd);
-        catP = listProduto.get(position).mcatProd;
+        nomeP = listProduto.get(position).NomeProd;
+        descP = listProduto.get(position).DescProd;
+        precoP = String.valueOf(listProduto.get(position).PrecoProd);
+        catP = listProduto.get(position).CategoriaProd;
 
         System.out.println("Selecionado o produto: " + nomeP);
 

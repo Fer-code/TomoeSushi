@@ -19,7 +19,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.example.tomoesushi.fragments.HomeFragment;
 import com.example.tomoesushi.R;
-import com.example.tomoesushi.fragments.PedidoFragment;
 import com.example.tomoesushi.fragments.PesquisaFragment;
 import com.example.tomoesushi.fragments.ReservaFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

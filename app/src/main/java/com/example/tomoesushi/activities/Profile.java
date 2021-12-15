@@ -37,8 +37,6 @@ public class Profile extends AppCompatActivity {
     ImageView profile;
     Gson gson;
     User user;
-    JSONArray[] itemsArray = new JSONArray[1];
-    private RequestQueue mQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

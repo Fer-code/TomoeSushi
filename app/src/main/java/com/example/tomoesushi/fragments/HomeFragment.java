@@ -61,8 +61,7 @@ public class HomeFragment extends Fragment {
         carouselView.setPageCount(mImages.length);
         carouselView.setImageListener(this::carrouselImageChange);
 
-        CardView cardView = (CardView) view.findViewById(R.id.myL);
-        cardView.setOnClickListener(this::onCardClick);
+        //cardView.setOnClickListener(this::onCardClick);
 
         listProduto = new LinkedList<>();
         arrayAdapterProduto = new ProdutoAdapter(getContext(), android.R.layout.simple_list_item_1, listProduto, getActivity());

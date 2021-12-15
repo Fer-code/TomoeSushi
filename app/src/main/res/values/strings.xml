@@ -26,7 +26,7 @@
     <string name="infoEnd">Rua Guaipá - Imperatriz Leopoldina - SP</string>
     <string name="contactUs"><u>Clique para entrar em contato</u></string>
 
-    <string name="AdressDelivery">Endereço para entrega</string>
+    <string name="AdressDelivery">Endereço atual</string>
 
     <string name="optional">Preenchimento opcional:</string>
     <string name="cep">CEP</string>
@@ -57,4 +57,5 @@
     <string name="buscar">Buscar</string>
     <string name="dimagemp"><u>Definir imagem de perfil</u></string>
     <string name="end">Endereço</string>
+    <string name="itens">Itens</string>
 </resources>

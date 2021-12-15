@@ -19,7 +19,6 @@ import java.util.List;
 
 public class ReservaAdapter extends ArrayAdapter<Reserva> {
 
-    public static TextView textViewApagar;
     private Activity activity;
 
     public ReservaAdapter(@NonNull Context context, int resource, @NonNull List<Reserva> objects, Activity activity) {
@@ -35,10 +34,11 @@ public class ReservaAdapter extends ArrayAdapter<Reserva> {
         TextView textViewDH = (TextView) view.findViewById(R.id.dataHoraReserva);
         TextView textViewStatus = (TextView) view.findViewById(R.id.statusReserva);
 
-        textViewApagar = (TextView) view.findViewById(R.id.apagar);
+        TextView textViewMesa = (TextView) view.findViewById(R.id.mesaReserva);
 
         textViewDH.setText(reserva.dataHoraReserva);
         textViewStatus.setText(reserva.statusReserva);
+        textViewMesa.setText("Número da mesa: " + reserva.getIdMesa());
 
         return view;
     }

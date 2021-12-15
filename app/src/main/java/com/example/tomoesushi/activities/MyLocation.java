@@ -24,13 +24,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class MyLocation extends AppCompatActivity implements FetchAddressTask.OnTaskCompleted {
+public class MyLocation extends AppCompatActivity{
 
 
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     private static final String FILE_NAME = "local";
 
-    private TextView txtResultado, txtLoad;
+    private TextView txtResultado;
 
     private String lastLatitude = "";
     private String lastLongitude = "";
@@ -51,13 +51,13 @@ public class MyLocation extends AppCompatActivity implements FetchAddressTask.On
 
         getSupportActionBar().hide();
 
-        txtLoad = findViewById(R.id.txtInternal);
+
         txtResultado = findViewById(R.id.txtResult);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
 
-        mLocationCallback = new LocationCallback() {
+        /*mLocationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
                 if (mTrackingLocation) {
@@ -65,9 +65,10 @@ public class MyLocation extends AppCompatActivity implements FetchAddressTask.On
                             .execute(locationResult.getLastLocation());
                 }
             }
-        };
+        };*/
     }
 
+    /*
     @Override
     protected void onStart() {
         super.onStart();
@@ -103,9 +104,9 @@ public class MyLocation extends AppCompatActivity implements FetchAddressTask.On
                 break;
         }
     }
+*/
 
-
-    private void stopTrackingLocation() {
+   /* private void stopTrackingLocation() {
         if (mTrackingLocation) {
             mTrackingLocation = false;
             txtResultado.setText(R.string.iniciar);
@@ -150,7 +151,8 @@ public class MyLocation extends AppCompatActivity implements FetchAddressTask.On
             //Esconder a progressBar
 
         }
-    }
+    }*/
+    //----------------------------------------------------------------------------------------------
 
     /*
     //Armazenamento interno

@@ -35,38 +35,18 @@
         android:layout_height="4dp"
         android:background="?android:attr/listDivider" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/myL"
+        <TextView
             android:layout_width="match_parent"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_height="90dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="5dp"
-        android:elevation="40dp"
-        android:layout_marginTop="10dp">
-
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="15dp"
-            app:srcCompat="@drawable/ic_baseline_place_24"
-            tools:ignore="VectorDrawableCompat" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="15dp"
-                android:backgroundTint="@color/black"
-                android:hint="@string/localizacao"
-                android:textSize="20sp" />
-
-        </androidx.cardview.widget.CardView>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            android:textColorHint="#640202"
+            android:hint="@string/itens"/>
 
         <ListView
             android:id="@+id/productList"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

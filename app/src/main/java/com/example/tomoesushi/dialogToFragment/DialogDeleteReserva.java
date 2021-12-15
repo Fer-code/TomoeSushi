@@ -22,6 +22,7 @@ public class DialogDeleteReserva extends DialogFragment {
     Button Apagar, NaoApagar;
     private int Id;
     TextView teset;
+    int g;
 
     public DialogDeleteReserva(int Id){
         this.Id = Id;

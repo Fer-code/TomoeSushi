@@ -40,6 +40,8 @@ public class DialogDeleteReserva extends DialogFragment {
         NaoApagar.setOnClickListener(this::Cancelar);
         Apagar.setOnClickListener(this::RemoverReserva);
 
+        reservaService = new ReservaService(getContext());
+
        // teset.setText(String.valueOf(Id));
 
         return view;
